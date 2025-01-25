@@ -2,12 +2,34 @@
   <head>
     <title>ACME Bank</title>
     <link rel="stylesheet" href="css/acme_bank.css">
-    <script src="js/acme_bank.js"></script>
+    <script defer src="js/acme_bank.js"></script>
   </head>
 
   <body>
-    <h2>Account Number: <span id="account-number">61982736528</span></h2>
-    <h2>Balance: <span id="account-balance">-$1,000,000</span></h2>
-    <h3>This account is Past Due</h3>
+    <div id="logo-area">
+      <img id="logo-hero" src="assets/acme_bank_logo.png"></img>
+      <h1 id="bank-name">Acme Bank</h1>
+    </div>
+
+    <table>
+      <tr>
+	<th scope="row">
+	  <p>Account Number:</p>
+	</th>
+	<td>
+	  <p id="account-number">61982736528</p>
+	</td>
+      </tr>
+      <tr>
+	<th scope="row">
+	  <p>Balance:</p>
+	</th>
+	<td>
+	  <p id="account-balance">-$1,000,000</p>
+	</td>
+      </tr>
+    </table>
+    <div id="notifications-area">
+    </div>
   </body>
 </html>

@@ -1,1 +1,28 @@
 /* */
+
+body {
+    background-color: #999;
+}
+
+#logo-area {
+    color: whitesmoke;
+    display: inline-block;
+}
+
+#logo-area img {
+    height: 64px;
+    vertical-align: middle;
+}
+#logo-area #bank-name {
+    display: inline;
+    vertical-align: middle;
+}
+
+#notifications-area h2 {
+    color: red;
+}
+
+#notifications-area h2:before {
+    content: url(/assets/icons/16/status/dialog-warning.png);
+    margin-right: 10px;
+}
