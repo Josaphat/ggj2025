@@ -116,3 +116,44 @@ button:hover ~ table .email-overlay {
 .functionally-a-button-stylistically-a-link:focus {
     outline: 1px dotted #00f;
 }
+
+#logoff-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    width: 100vw;
+    height: 100vh;
+    background-color: #bdc1c2;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: none;
+    font-family: "Pixelated MS Sans Serif", Arial;
+    font-size: 11px;
+}
+
+.progress-indicator {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    box-sizing: border-box;
+    height: 32px;
+    width: 492px;
+    padding: 4px;
+    position: relative;
+}
+
+.progress-indicator.segmented .progress-indicator-bar {
+    background-color: transparent;
+    background-image: linear-gradient(90deg, navy 16px, transparent 0 2px);
+    background-repeat: repeat;
+    background-size: 18px 100%;
+    width: 0%;
+    height: 100%;
+    display: block;
+}

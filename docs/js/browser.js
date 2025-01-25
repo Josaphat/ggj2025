@@ -10,3 +10,37 @@ function onEmailClick(emailId) {
 
     emailWindow.style.setProperty('display', 'block')
 }
+
+let intervalId
+let progressIndication
+const TOTAL_PROGRESS_TIME = 10000
+function onLogoffClick() {
+    const logOffScreen = document.querySelector('#logoff-screen')
+    logOffScreen.style = "display: flex;"
+
+    const progressBar = document.querySelector('.progress-indicator-bar')
+    progressIndication = 0
+    progressBar.style = `width: ${progressIndication / TOTAL_PROGRESS_TIME * 100}%`
+
+    intervalId = setInterval(() => {
+        const progressBar = document.querySelector('.progress-indicator-bar')
+        
+
+        progressIndication = Math.min(Math.random() * 4000 + progressIndication, TOTAL_PROGRESS_TIME)
+
+        progressBar.style = `width: ${progressIndication / TOTAL_PROGRESS_TIME * 100}%`
+
+        if (progressIndication >= TOTAL_PROGRESS_TIME) {
+            clearInterval(intervalId)
+             const logOffScreen = document.querySelector('#logoff-screen')
+            logOffScreen.style = "display: none;"
+
+            const currDay = localStorage.getItem('day')
+            if(currDay) {
+                localStorage.setItem('day', Number(currDay) + 1)
+            } else {
+                console.error('no day set')
+            }
+        }
+    }, 1000)
+}
