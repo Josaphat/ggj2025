@@ -1,5 +1,5 @@
 async function populate_stonks() {
-    const requestURL = "http://josaphat.github.io/ggj2025/js/stonks.json";
+    const requestURL = "js/stonks.json";
     const request  = new Request(requestURL);
     const response = await fetch(request);
     const stonksText = await response.text();
@@ -11,6 +11,7 @@ async function populate_stonks() {
 
 function populate_table(stonks) {
     const all = stonks.all;
+    const stonksBody = document.querySelector("#stonks-body");
 
     for (const stonk of all) {
 	// FIXME: Dynamic price
@@ -29,11 +30,19 @@ function populate_table(stonks) {
 	const sharePrice = document.createElement("td");
 	const totalPosition = document.createElement("td");
 
-	ticker.textContext = stonk.ticker;
-	name.textContext = stonk.name;
-	shares.textContext = sharesHeld;
-	sharePrice.textContext = priceString;
-	totalPosition.textContext = totalValue;
+	ticker.textContent = stonk.ticker;
+	name.textContent = stonk.name;
+	shares.textContent = sharesHeld;
+	sharePrice.textContent = priceString;
+	totalPosition.textContent = totalValue;
+
+	row.appendChild(ticker);
+	row.appendChild(name);
+	row.appendChild(shares);
+	row.appendChild(sharePrice);
+	row.appendChild(totalPosition);
+
+	stonksBody.appendChild(row);
     }
 }
 
