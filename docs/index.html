@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://unpkg.com/98.css" />
         <link rel="stylesheet" href="./css/98custom.css"/>
         <script src="./js/fos.min.js"></script>
-        <script src="./js/game.js"></script>
+        <script src="./js/browser.js"></script>
       </head>
     <body style="width: 100vw; height: 100vh; margin: 0px;">
         <fos-desktop style="background-image: url('imgs/bubble.jpg'); background-size: 100vw 100vh;">
@@ -56,8 +56,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <button class="not-ninety-eight-style" onclick="onEmailClick(1)">
-                                <tr class="email-button">
+                            <button class="not-ninety-eight-style" onclick="onEmailClick(1)" style="width: 100%; height: 16px; position: absolute; top: 16px; z-index: 1000;">
+                            </button>
+                                <tr class="email-overlay">
                                     <td>
                                         <img src="./assets/Internet-mail.svg.png" width="16px" height="16px"/>
                                     </td>
@@ -71,13 +72,55 @@
                                         Wednesday, January 12th
                                     </td>
                                 </tr>
-                            </button>
                     </tbody>
                 </table>
             </fos-window>
 
-            <fos-window name="w4" id="#email-popup-1" title="Want money?">
-                Email
+            <fos-window name="w4" id="email-popup-1" title="Want money?" class="email-popup">
+                <table class="email-header">
+                  <tbody>
+                    <tr>
+                      <th>
+                        From: 
+                      </th>
+                      <td>
+                        Creepy Man (creepyman@aol.com)
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        To: 
+                      </th>
+                      <td>
+                        Paul (mastertraderpaul98@aol.com)
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        CC: 
+                      </th>
+                      <td>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        Subject: 
+                      </th>
+                      <td>
+                        Want to make money?
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+<pre class="email-message-container">
+Dear Paul,
+Fortune finds me in need of a man on the outside. You can help me. There is a reward in it for you.
+Best,
+Your mysterious benefactor
+</pre>
+              <button>
+                Reply
+              </button>
             </fos-window>
         
             <fos-bar class="ms-button">

@@ -31,13 +31,41 @@
     font-family: "Pixelated MS Sans Serif", Arial;
     font-size: 11px;
 }
+.not-ninety-eight-style:focus {
+    border: none
+}
+.not-ninety-eight-style:active {
+    border: none
+}
 
 .email-container {
     width: 100%;
     padding: 12px;
 }
 
-.email-button:hover {
+button:hover ~ table .email-overlay {
    background-color: #39107b;
    color: white;
+}
+
+.email-header {
+    background-color: #bdc1c2;
+    width: 100%;
+}
+
+.email-popup {
+    background-color: #bdc1c2;
+}
+
+.email-message-container {
+    background-color: white;
+    margin: 12px;
+    padding: 4px;
+    text-align: left;
+    
+    -webkit-font-smoothing: none;
+    font-family: "Pixelated MS Sans Serif", Arial;
+    text-wrap: wrap;
+    height: 100px;
+    overflow-y: scroll;
 }
