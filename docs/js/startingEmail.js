@@ -1,15 +1,13 @@
-const emailTextOptions = {
-    yes: "Yeah, absolutely! How do I start?",
-    no: 'Nah, I\'m good. I\'d rather go bankrupt :/'
-}
-
 const emails = [{
     "id": "starting-email",
-    "from": "Creepy Man (creepyman@aol.com)",
-    "to": "Paul (mastertraderpaul98@aol.com)",
+    "from": "Creepy Man",
+    "fromEmail": 'creepyman@aol.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Wed. January 12th 2pm',
     "cc": '',
     "subject": {
-        "line": "Want to make money?",
+        "line": "Want Money?",
         "options": [],
     },
     "content": `Dear Paul,
@@ -18,22 +16,23 @@ Best,
 Your mysterious benefactor`,
     "isReply": false,
     "canReply": "starting-email-reply",
+    "isRead": false,
 }, {
     "id": "starting-email-reply",
     "from": "Paul (mastertraderpaul98@aol.com)",
     "to": "Creepy Man (creepyman@aol.com)",
     "cc": '',
     "subject": {
-        "line": "Re: Want to Make Money?",
+        "line": "Re: Want Money?",
         "options": [
             {
                 "value": 'yes',
-                "text": "Re: Want to make money? Yes, absolutely!",
+                "text": "Re: Want Money? Yes, absolutely!",
                 "content": "Yeah, absolutely! How do I start?"
             },
             {
                 "value": "no",
-                "text": "Re: Want to make money? Nah, I'm good",
+                "text": "Re: Want Money? Nah, I'm good",
                 "content": 'Nah, I\'m good. I\'d rather go bankrupt :/'
             }
         ],
@@ -41,8 +40,96 @@ Your mysterious benefactor`,
     "content": "",
     "isReply": true,
     "canReply": "",
-    "canSend": true
+    "canSend": true,
+    "isRead": true,
 }]
+function addEmails (emailsInbox, emailInboxTableBody, condition) {
+    emails.filter(condition).forEach((email, index) => {
+        const buttonOverlay = document.createElement('button')
+        buttonOverlay.className = "not-ninety-eight-style"
+        buttonOverlay.onclick = () => onEmailClick(email.id)
+        buttonOverlay.style = `width: 100%; height: ${16 * (index + 1)}px; position: absolute; top: ${16 * (index + 1)}px; z-index: 1000;`
+
+        emailsInbox.append(buttonOverlay)
+
+        const tableRow = document.createElement('tr')
+        tableRow.className = `email-overlay email-overlay-${email.id}`
+
+        emailInboxTableBody.append(tableRow)
+
+        const tableDatumEmailIcon = document.createElement('td')
+        const emailIcon = document.createElement('img')
+        emailIcon.src = "./assets/Internet-mail.svg.png" 
+        emailIcon.width = 16
+        emailIcon.height = 16
+
+        tableDatumEmailIcon.append(emailIcon)
+        tableRow.append(tableDatumEmailIcon)
+
+        const tableDatumFrom = document.createElement('td')
+        tableDatumFrom.textContent = email.from
+
+        tableRow.append(tableDatumFrom)
+
+        const tableDatumSubject = document.createElement('td')
+        tableDatumSubject.textContent = email.subject.line
+
+        tableRow.append(tableDatumSubject)
+
+        const tableDatumReceived = document.createElement('td')
+        tableDatumReceived.textContent = email.received
+
+        tableRow.append(tableDatumReceived)
+
+    })
+}
+
+function populateInbox () {
+    // LocalStorage Get
+    const currentStonks = []
+
+    const emailsInbox = document.querySelector('#emails-inbox')
+
+    const alreadyHasTable = document.querySelector(`#emails-inbox table`)
+
+    if (!alreadyHasTable) {
+        emailsInbox.setAttribute('title', "Paul's Email")
+
+        const emailInboxTable = document.createElement('table')
+        emailInboxTable.className = 'email-container'
+
+        const emailInboxTableHeader = document.createElement('thead')
+        emailInboxTable.append(emailInboxTableHeader)
+
+        const emailInboxTableHeaderRow = document.createElement('tr')
+        emailInboxTableHeader.append(emailInboxTableHeaderRow)
+
+        const emailInboxTableHeaderRowEmpty = document.createElement('th')
+        emailInboxTableHeaderRowEmpty.style = 'width: 16px;'
+        emailInboxTableHeaderRow.append(emailInboxTableHeaderRowEmpty)
+
+        const emailInboxTableHeaderRowFrom= document.createElement('th')
+        emailInboxTableHeaderRowFrom.textContent = 'From'
+        emailInboxTableHeaderRow.append(emailInboxTableHeaderRowFrom)
+
+        const emailInboxTableHeaderRowSubject= document.createElement('th')
+        emailInboxTableHeaderRowSubject.textContent = 'Subject'
+        emailInboxTableHeaderRow.append(emailInboxTableHeaderRowSubject)
+
+        const emailInboxTableHeaderRowReceived= document.createElement('th')
+        emailInboxTableHeaderRowReceived.textContent = 'Received'
+        emailInboxTableHeaderRow.append(emailInboxTableHeaderRowReceived)
+
+        const emailInboxTableBody = document.createElement('tbody')
+        emailInboxTable.append(emailInboxTableBody)
+    
+        if (currentStonks.length === 0) { 
+            addEmails(emailsInbox, emailInboxTableBody, (email) => email.received === 'Wed. January 12th 2pm')
+        }
+
+        emailsInbox.append(emailInboxTable)
+    }
+}
 
 function populateEmail (id) {
     const currentEmail = emails.find(e => e.id === id)
@@ -68,7 +155,7 @@ function populateEmail (id) {
         emailHeaderFromRowHeader.textContent = "From: "
         
         const emailHeaderFromRowData = document.createElement('td')
-        emailHeaderFromRowData.textContent = currentEmail.from
+        emailHeaderFromRowData.textContent = `${currentEmail.from} (${currentEmail.fromEmail})`
 
         emailHeaderFromRow.append(emailHeaderFromRowHeader)
         emailHeaderFromRow.append(emailHeaderFromRowData)
@@ -81,7 +168,7 @@ function populateEmail (id) {
         emailHeaderToRowHeader.textContent = "To: "
         
         const emailHeaderToRowData = document.createElement('td')
-        emailHeaderToRowData.textContent = currentEmail.to
+        emailHeaderToRowData.textContent = `${currentEmail.to} (${currentEmail.toEmail})`
 
         emailHeaderToRow.append(emailHeaderToRowHeader)
         emailHeaderToRow.append(emailHeaderToRowData)
