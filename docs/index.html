@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="./css/98custom.css"/>
         <script src="./js/fos.min.js"></script>
         <script src="./js/browser.js"></script>
+        <script src="./js/startingEmail.js"></script>
       </head>
     <body style="width: 100vw; height: 100vh; margin: 0px;">
         <fos-desktop style="background-image: url('imgs/bubble.jpg'); background-size: 100vw 100vh;">
@@ -170,18 +171,24 @@ Your mysterious benefactor
                       Subject: 
                     </th>
                     <td>
-                      <select>
-                        <option>
-                          Re: Want to make money?
+                      <select name="email-responses" onchange="onOptionChange(this)">
+                        <option value="yes">
+                          Re: Want to make money? Yes, absolutely!
+                        </option>
+                        <option value="no">
+                          Re: Want to make money? Nah, I'm good
                         </option>
                       </select>
                     </td>
                   </tr>
                 </tbody>
               </table>
-<pre class="email-message-container">
+<pre class="email-message-container" id="email-message-container">
 Yeah, absolutely! How do I start?
 </pre>
+<button class="reply-button" onclick="sendEmail(2)">
+Send
+</button>
             </fos-window>
         
             <fos-bar class="ms-button" style="text-align: center;">
