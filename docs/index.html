@@ -12,7 +12,7 @@
     <body style="width: 100vw; height: 100vh; margin: 0px;">
         <fos-desktop style="background-image: url('imgs/bubble.jpg'); background-size: 100vw 100vh;">
 
-            <fos-icon href="w2" style="background-color: transparent; box-shadow: none;">
+            <fos-icon fixed="true" href="w2" style="background-color: transparent; box-shadow: none;">
 				<div>
 					<table style="text-align: center; background-color: transparent;">
 					<tr><td><img src="./assets/icons/32/actions/go-home.png" width="50vw" height="50vh"></img></td></tr>
@@ -21,7 +21,7 @@
 				</div>
 			</fos-icon>
 
-            <fos-icon href="w3" style="background-color: transparent; box-shadow: none;">
+            <fos-icon fixed="true" href="w3" style="background-color: transparent; box-shadow: none;">
 				<div>
 					<table style="text-align: center; background-color: transparent;">
 					<tr><td><img src="./assets/icons/32/apps/internet-mail.png" height="50vw" width="50vh"></img></td></tr>
@@ -35,7 +35,7 @@
             </fos-window>
             
             <fos-window name="w2" title="Paul's Homepage">
-				<iframe src="./homepage.html" style="height: 75vh; width: 75vw;"></iframe>
+				<iframe src="./homepage.html" style="min-height: 75vh; min-width: 75vw; height: 100%; width: 100%;"></iframe>
             </fos-window>
             
             <fos-window name="w3" title="Window 3">
@@ -175,10 +175,10 @@ Send
 </button>
             </fos-window>
         
-            <fos-bar class="ms-button">
-                <fos-menu name="Start">
+            <fos-bar class="ms-button" style="text-align: center;">
+                <fos-menu name="Start" style="font-weight: bold; font-size: 16px;">
                     <fos-menu-item href="w1">
-                        Log Off
+                        <p style="font-size: 12px;">Log Off</p>
                     </fos-menu-item>
                 </fos-menu>
             </fos-bar>
