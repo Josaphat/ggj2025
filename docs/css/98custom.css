@@ -58,8 +58,15 @@ fos-window, fos-menu {
 }
 
 button:hover ~ table .email-overlay {
-   background-color: #39107b;
+   background-color: #39107b !important;
    color: white;
+}
+
+.email-is-read {
+    background-color: #dce4e4
+}
+.email-not-read {
+    background-color: white
 }
 
 .email-header {

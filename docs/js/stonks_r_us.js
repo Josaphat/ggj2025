@@ -107,8 +107,8 @@ function populate_table(stonks) {
 	ticker.textContent = stonk.ticker;
 	name.textContent = stonk.name;
 	shares.textContent = sharesHeld;
-	sharePrice.textContent = priceString;
-	totalPosition.textContent = totalValue.toFixed(2);
+	sharePrice.textContent = "$" + unitPrice.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+	totalPosition.textContent = "$" + totalValue.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
 	// var buyButton = document.createElement("button");
 	// buyButton.innerHTML = "Buy 100 shares<br />for $" + parseFloat(priceString) * 100;

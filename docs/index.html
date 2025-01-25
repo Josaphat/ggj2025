@@ -29,7 +29,7 @@
 			</fos-icon>
 
 			<!-- Email icon -->
-            <fos-icon fixed="true" href="w3" style="background-color: transparent; box-shadow: none;">
+            <fos-icon fixed="true" href="w3" style="background-color: transparent; box-shadow: none;" onclick="populateInbox()">
 				<div>
 					<table style="text-align: center; background-color: transparent;">
 					<tr><td><img src="./assets/icons/32/apps/internet-mail.png" height="50vw" width="50vh"></img></td></tr>
@@ -96,58 +96,25 @@
 				<iframe id="bank-iframe" src="./acme_bank.html" style="min-height: 75vh; min-width: 75vw; height: 100%; width: 100%;"></iframe>
 			</fos-window>
             
-            <fos-window name="w3" title="Paul's Email">
-                <table class="email-container">
-                    <thead>
-                        <tr>
-                            <th style="width: 16px;">
+			<!-- Emails window -->
+      <fos-window name="w3" id="emails-inbox">
+      </fos-window>
 
-                            </th>
-                            <th>
-                                From
-                            </th>
-                            <th>
-                                Subject
-                            </th>
-                            <th>
-                                Received
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            <button class="not-ninety-eight-style" onclick="onEmailClick('starting-email')" style="width: 100%; height: 16px; position: absolute; top: 16px; z-index: 1000;">
-                            </button>
-                                <tr class="email-overlay">
-                                    <td>
-                                        <img src="./assets/Internet-mail.svg.png" width="16px" height="16px"/>
-                                    </td>
-                                    <td>
-                                        Creepy man
-                                    </td>
-                                    <td>
-                                        Want money?
-                                    </td>
-                                    <td>
-                                        Wednesday, January 12th
-                                    </td>
-                                </tr>
-                    </tbody>
-                </table>
-            </fos-window>
+			<!-- Starting Email window -->
+      <fos-window name="w4" id="email-popup-starting-email">
+      </fos-window>
 
-            <fos-window name="w4" id="email-popup-starting-email">
-            </fos-window>
-
-            <fos-window name="w5" id="email-popup-starting-email-reply">
-            </fos-window>
-        
-            <fos-bar class="ms-button" style="text-align: center;">
-                <fos-menu name="Start" style="font-weight: bold; font-size: 16px;">
-                    <fos-menu-item href="w1" style="width: 25vh;">
-                        <p style="font-size: 12px;">Log Off</p>
-                    </fos-menu-item>
-                </fos-menu>
-            </fos-bar>
+			<!-- Starting Email Reply window -->
+      <fos-window name="w5" id="email-popup-starting-email-reply">
+      </fos-window>
+  
+      <fos-bar class="ms-button" style="text-align: center;">
+          <fos-menu name="Start" style="font-weight: bold; font-size: 16px;">
+              <fos-menu-item href="w1" style="width: 25vh;">
+                  <p style="font-size: 12px;">Log Off</p>
+              </fos-menu-item>
+          </fos-menu>
+      </fos-bar>
 
      
         </fos-desktop>
