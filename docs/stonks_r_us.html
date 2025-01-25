@@ -5,10 +5,21 @@
     <script src="js/stonks_r_us.js"></script>
   </head>
 
-  <body>
-    <table>
-      <thead>
-	<tr>
+  <body style="background-image: url('assets/images/stonks2.jpg');">
+	<div style="width: 100vw; height: 20vh; background-color: rgba(255,255,255,0.5); text-align: center; font-size: 48px;">
+		STONKS 'R' US
+		<br />
+		<p style="font-size: 24px;">Quit after you're ahead.</p>
+	</div>
+	<br />
+	<br />
+	<br />
+
+	<!-- <img src="assets/images/stonks2.jpg" style="width: 100vw; height: 25vh" /> -->
+
+    <table style="border: 2px solid black; background: white; margin-left: 20vw;">
+      <thead style="border: 2px solid black;">
+	<tr style="border: 2px solid black;">
 	  <th scope="col">Ticker</th>
 	  <th scope="col">Name</th>
 	  <th scope="col">Shares</th>
@@ -16,13 +27,12 @@
 	  <th scope="col">Total Position</th>
       </thead>
 
-      <tbody id="stonks-body">
+      <tbody id="stonks-body" style="border: 2px solid black;">
       </tbody>
       <tfoot>
 	<tr>
-	  <th scope="row" colspan="4">Total Value</th>
-	  <!-- FIXME: Total position is hardcoded -->
-	  <td>$18750.00</td>
+	  <th scope="row" colspan="4" style="text-align: left;">Total Value</th>
+	  <td id="totalTotal" style="border: 2px solid transparent;">PLACEHOLDER VALUE, WILL NEVER SHOW</td>
 	</tr>
       </tfoot>
     </table>
