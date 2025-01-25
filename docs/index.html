@@ -12,6 +12,8 @@
     <body style="width: 100vw; height: 100vh; margin: 0px;">
         <fos-desktop style="background-image: url('imgs/bubble.jpg'); background-size: 100vw 100vh;">
 
+			<!-- ICON DEFINITIONS BELOW -->
+
 			<!-- Homepage icon -->
             <fos-icon fixed="true" href="w2" style="background-color: transparent; box-shadow: none;">
 				<div>
@@ -32,8 +34,18 @@
 				</div>
 			</fos-icon>
 
-			<!-- Stonks icon -->
-            <fos-icon fixed="true" href="bonzi" style="background-color: transparent; box-shadow: none;">
+			<!-- Bank icon -->
+            <fos-icon fixed="true" href="bank" style="background-color: transparent; box-shadow: none;">
+				<div>
+					<table style="text-align: center; background-color: transparent;">
+					<tr><td><img src="./assets/gnome_icons/Emblem-advertisement-dollar.svg.png_32.png" height="50vw" width="50vh"></img></td></tr>
+					<tr><td><p style="color: lightgray; font-size: 16px; font-weight: normal;">ACME Bank</p></td></tr>
+					</table>
+				</div>
+			</fos-icon>
+
+			<!-- Copilot icon -->
+            <fos-icon fixed="true" href="copilot" style="background-color: transparent; box-shadow: none;">
 				<div>
 					<table style="text-align: center; background-color: transparent;">
 					<tr><td><img src="./assets/gnome_icons/Gnome-dialog-question.svg.png_32.png" height="50vw" width="50vh"></img></td></tr>
@@ -42,18 +54,38 @@
 				</div>
 			</fos-icon>
 
-            <fos-window name="w1" title="Window 1">
-                <h2>Test 1</h2>
-            </fos-window>
-            
+			<!-- Stonks icon -->
+            <fos-icon fixed="true" href="stonks" style="background-color: transparent; box-shadow: none;">
+				<div>
+					<table style="text-align: center; background-color: transparent;">
+					<tr><td><img src="./assets/gnome_icons/Emblem-money.svg.png_32.png" height="50vw" width="50vh"></img></td></tr>
+					<tr><td><p style="color: lightgray; font-size: 16px; font-weight: normal;">Stonks 'R' Us</p></td></tr>
+					</table>
+				</div>
+			</fos-icon>
+
+			<!-- WINDOW DEFINITIONS BELOW -->
+
+			<!-- Homepage window -->
             <fos-window name="w2" title="Paul's Homepage">
 				<iframe src="./homepage.html" style="min-height: 75vh; min-width: 75vw; height: 100%; width: 100%;"></iframe>
-            </fos-window>
 
-			<fos-window name="bonzi" title="Copilot">
-				<img src="./assets/images/expand_dong.webp" />
+            </fos-window>
+			<!-- Copilot window -->
+			<fos-window name="copilot" title="Copilot">
+				<img src="./assets/images/expand_dong.webp" style="width: 100%; height: 100%;" />
+			</fos-window>
+
+			<!-- Stonks window -->
+			<fos-window name="stonks" title="Stonks 'R' Us">
+				<iframe src="./stonks_r_us.html" style="min-height: 75vh; min-width: 75vw; height: 100%; width: 100%;"></iframe>
+			</fos-window>
+
+			<fos-window name="bank" title="ACME Bank">
+				<iframe src="./acme_bank.html" style="min-height: 75vh; min-width: 75vw; height: 100%; width: 100%;"></iframe>
 			</fos-window>
             
+			<!-- Email window -->
             <fos-window name="w3" title="Window 3">
                 <table class="email-container">
                     <thead>
@@ -193,7 +225,7 @@ Send
         
             <fos-bar class="ms-button" style="text-align: center;">
                 <fos-menu name="Start" style="font-weight: bold; font-size: 16px;">
-                    <fos-menu-item href="w1">
+                    <fos-menu-item href="w1" style="width: 25vh;">
                         <p style="font-size: 12px;">Log Off</p>
                     </fos-menu-item>
                 </fos-menu>
