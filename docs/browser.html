@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Paul">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/98.css" />
+        <link rel="stylesheet" href="./css/98custom.css"/>
+        <script src="./js/fos.min.js"></script>
+        <script src="./js/game.js"></script>
+      </head>
+    <body style="width: 100vw; height: 100vh; margin: 0px;">
+        <fos-desktop>
+
+            <fos-icon href="w1" style="background-color: aliceblue;">F</fos-icon>
+            <fos-icon href="w2">O</fos-icon>
+            <fos-icon href="w3" style="background-color: transparent; box-shadow: none;"><img src="./assets/envelope_closed-1.png" height="48px" width="48px"/></fos-icon>
+        
+            <fos-window name="w1" title="Window 1">
+                <h2>Test 1</h2>
+            </fos-window>
+            
+            <fos-window name="w2" title="Window 2">
+                <h1>Hello</h1>
+                <p>How are you on this fine morning/afternoon/night?</p>
+                <p><a href="javascript:alert('hi');">Click here to say hi</a></p>
+            </fos-window>
+            
+            <fos-window name="w3" title="Window 3">
+                <table class="email-container">
+                    <thead>
+                        <tr>
+                            <th style="width: 16px;">
+
+                            </th>
+                            <th>
+                                From
+                            </th>
+                            <th>
+                                Subject
+                            </th>
+                            <th>
+                                Received
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr class="email-button">
+                                <td>
+                                    <fos-icon href="h4">
+                                        <img src="./assets/envelope_closed-0.png" width="16px" height="16px"/>
+                                    </fos-icon>
+                                </td>
+                                <td>
+                                    Creepy man
+                                </td>
+                                <td>
+                                    Want money?
+                                </td>
+                                <td>
+                                    Wednesday, January 12th
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+                <fos-panel name="panel1">
+                    bsadfjsdlfjj
+                </fos-panel>
+            </fos-window>
+
+            <fos-window name="w4">
+                Email
+            </fos-window>
+        
+            <fos-bar class="ms-button">
+                <fos-menu name="Start">
+                    <fos-menu-item href="w1">
+                        Log Off
+                    </fos-menu-item>
+                </fos-menu>
+            </fos-bar>
+        
+        </fos-desktop>
+    </body>
+</html>
