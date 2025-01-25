@@ -54,7 +54,7 @@
 				<img src="./assets/images/expand_dong.webp" />
 			</fos-window>
             
-            <fos-window name="w3" title="Window 3">
+            <fos-window name="w3" title="Paul's Email">
                 <table class="email-container">
                     <thead>
                         <tr>
@@ -73,7 +73,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <button class="not-ninety-eight-style" onclick="onEmailClick(1)" style="width: 100%; height: 16px; position: absolute; top: 16px; z-index: 1000;">
+                            <button class="not-ninety-eight-style" onclick="onEmailClick('starting-email')" style="width: 100%; height: 16px; position: absolute; top: 16px; z-index: 1000;">
                             </button>
                                 <tr class="email-overlay">
                                     <td>
@@ -93,102 +93,10 @@
                 </table>
             </fos-window>
 
-            <fos-window name="w4" id="email-popup-1" title="Want money?" class="email-popup">
-                <table class="email-header">
-                  <tbody>
-                    <tr>
-                      <th>
-                        From: 
-                      </th>
-                      <td>
-                        Creepy Man (creepyman@aol.com)
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>
-                        To: 
-                      </th>
-                      <td>
-                        Paul (mastertraderpaul98@aol.com)
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>
-                        CC: 
-                      </th>
-                      <td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>
-                        Subject: 
-                      </th>
-                      <td>
-                        Want to make money?
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-<pre class="email-message-container">
-Dear Paul,
-Fortune finds me in need of a man on the outside. You can help me. There is a reward in it for you. <button class="functionally-a-button-stylistically-a-link" onclick="clickOnStartingEmailLink()">Look here</button>
-Best,
-Your mysterious benefactor
-</pre>
-              <button class="reply-button" onclick="onEmailClick(2)">
-                Reply
-              </button>
+            <fos-window name="w4" id="email-popup-starting-email">
             </fos-window>
 
-            <fos-window name="w5" id="email-popup-2" title="Re: Want Money?" class="email-popup">
-              <table class="email-header">
-                <tbody>
-                  <tr>
-                    <th>
-                      From: 
-                    </th>
-                    <td>
-                      Paul (mastertraderpaul98@aol.com)
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      To: 
-                    </th>
-                    <td>
-                      Creepy Man (creepyman@aol.com)
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      CC: 
-                    </th>
-                    <td>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>
-                      Subject: 
-                    </th>
-                    <td>
-                      <select name="email-responses" onchange="onOptionChange(this)">
-                        <option value="yes">
-                          Re: Want to make money? Yes, absolutely!
-                        </option>
-                        <option value="no">
-                          Re: Want to make money? Nah, I'm good
-                        </option>
-                      </select>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-<pre class="email-message-container" id="email-message-container">
-Yeah, absolutely! How do I start?
-</pre>
-<button class="reply-button" onclick="sendEmail(2)">
-Send
-</button>
+            <fos-window name="w5" id="email-popup-starting-email-reply">
             </fos-window>
         
             <fos-bar class="ms-button" style="text-align: center;">
