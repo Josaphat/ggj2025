@@ -34,7 +34,7 @@
             </fos-window>
             
             <fos-window name="w2" title="Paul's Homepage">
-				<iframe src="./homepage.html" style="height: 75vh; width: 75vw;"></iframe>
+				<iframe src="./homepage.html" style="min-height: 75vh; min-width: 75vw; height: 100%; width: 100%;"></iframe>
             </fos-window>
             
             <fos-window name="w3" title="Window 3">
@@ -168,10 +168,10 @@ Yeah, absolutely! How do I start?
 </pre>
             </fos-window>
         
-            <fos-bar class="ms-button">
-                <fos-menu name="Start">
+            <fos-bar class="ms-button" style="text-align: center;">
+                <fos-menu name="Start" style="font-weight: bold; font-size: 16px;">
                     <fos-menu-item href="w1">
-                        Log Off
+                        <p style="font-size: 12px;">Log Off</p>
                     </fos-menu-item>
                 </fos-menu>
             </fos-bar>
