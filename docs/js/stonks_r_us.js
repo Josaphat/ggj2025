@@ -34,7 +34,7 @@ function populate_table(stonks) {
 	name.textContent = stonk.name;
 	shares.textContent = sharesHeld;
 	sharePrice.textContent = priceString;
-	totalPosition.textContent = totalValue;
+	totalPosition.textContent = totalValue.toFixed(2);
 
 	row.appendChild(ticker);
 	row.appendChild(name);
