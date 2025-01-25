@@ -15,3 +15,9 @@ function sendEmail (windowNum) {
 
     emailWindow.style.setProperty('display', 'none')
 }
+
+function clickOnStartingEmailLink () {
+    const emailWindow = document.querySelector(`#terrence-archive-popup`)
+
+    emailWindow.style.setProperty('display', 'block')
+}
