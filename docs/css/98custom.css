@@ -50,7 +50,8 @@ button:hover ~ table .email-overlay {
 
 .email-header {
     background-color: #bdc1c2;
-    width: 100%;
+    margin-left: 6px;
+    width: calc(100% - 6px);
 }
 
 .email-popup {
@@ -68,4 +69,8 @@ button:hover ~ table .email-overlay {
     text-wrap: wrap;
     height: 100px;
     overflow-y: scroll;
+}
+
+.reply-button {
+    margin-left: 12px;
 }
