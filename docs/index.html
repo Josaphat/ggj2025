@@ -11,6 +11,7 @@
     <body style="width: 100vw; height: 100vh; margin: 0px;">
         <fos-desktop style="background-image: url('imgs/bubble.jpg'); background-size: 100vw 100vh;">
 
+			<!-- Homepage icon -->
             <fos-icon fixed="true" href="w2" style="background-color: transparent; box-shadow: none;">
 				<div>
 					<table style="text-align: center; background-color: transparent;">
@@ -20,6 +21,7 @@
 				</div>
 			</fos-icon>
 
+			<!-- Email icon -->
             <fos-icon fixed="true" href="w3" style="background-color: transparent; box-shadow: none;">
 				<div>
 					<table style="text-align: center; background-color: transparent;">
@@ -28,7 +30,17 @@
 					</table>
 				</div>
 			</fos-icon>
-        
+
+			<!-- Stonks icon -->
+            <fos-icon fixed="true" href="bonzi" style="background-color: transparent; box-shadow: none;">
+				<div>
+					<table style="text-align: center; background-color: transparent;">
+					<tr><td><img src="./assets/gnome_icons/Gnome-dialog-question.svg.png_32.png" height="50vw" width="50vh"></img></td></tr>
+					<tr><td><p style="color: lightgray; font-size: 16px; font-weight: normal;">Copilot</p></td></tr>
+					</table>
+				</div>
+			</fos-icon>
+
             <fos-window name="w1" title="Window 1">
                 <h2>Test 1</h2>
             </fos-window>
@@ -36,6 +48,10 @@
             <fos-window name="w2" title="Paul's Homepage">
 				<iframe src="./homepage.html" style="min-height: 75vh; min-width: 75vw; height: 100%; width: 100%;"></iframe>
             </fos-window>
+
+			<fos-window name="bonzi" title="Copilot">
+				<img src="./assets/images/expand_dong.webp" />
+			</fos-window>
             
             <fos-window name="w3" title="Window 3">
                 <table class="email-container">
@@ -175,7 +191,8 @@ Yeah, absolutely! How do I start?
                     </fos-menu-item>
                 </fos-menu>
             </fos-bar>
-        
+
+     
         </fos-desktop>
     </body>
 </html>
