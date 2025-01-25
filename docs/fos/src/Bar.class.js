@@ -51,17 +51,19 @@ class Bar extends HTMLElement {
 				:host{
 					position: absolute;
 					${this.position}: 0;
-					left: 0;
-					z-index: 1000;
-					background-color: #AAA;
-					width: 100%;
-					height: 40px;
-					display: flex;
-					align-items: center;
-					justify-content: flex-start;
-					box-shadow: 0px 0px 5px black;
+					left: 0;z-index: 1000;background: silver;
+					box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+					border: none;
+					border-radius: 0;
 					box-sizing: border-box;
-					padding-left: 10px;
+					color: transparent;
+					min-height: 23px;
+					min-width: 75px;
+					padding: 12px;
+					text-shadow: 0 0 #222;
+					-webkit-font-smoothing: none;
+					font-family: "Pixelated MS Sans Serif", Arial;
+					font-size: 11px;
 				}
 			</style>
 			<slot></slot>
