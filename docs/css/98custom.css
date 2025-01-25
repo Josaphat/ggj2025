@@ -74,3 +74,24 @@ button:hover ~ table .email-overlay {
 .reply-button {
     margin-left: 12px;
 }
+
+.functionally-a-button-stylistically-a-link {
+    background: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #00f;
+    min-height: 0px;
+    min-width: 0px;
+    padding: 4px;
+    text-shadow: none;
+    -webkit-font-smoothing: none;
+    font-family: "Pixelated MS Sans Serif", Arial;
+    font-size: 11px;
+    text-decoration: underline;
+}
+
+.functionally-a-button-stylistically-a-link:focus {
+    outline: 1px dotted #00f;
+}
