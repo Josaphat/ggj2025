@@ -1,0 +1,39 @@
+{
+    "all": [
+	{
+	    "ticker": "DOG",
+	    "name": "TheDog.com",
+	    "pricesByDay": [
+		"18.75", "1"
+	    ]
+	},
+	{
+	    "ticker": "WHOO",
+	    "name": "Wahoo.com",
+	    "pricesByDay": [
+		"98.22", "0.78"
+	    ]
+	},
+	{
+	    "ticker": "GE",
+	    "name": "Gotham Energy",
+	    "pricesByDay": [
+		"17.55", "19.00"
+	    ]
+	},
+	{
+	    "ticker": "ATT",
+	    "name": "Acme Tele-Typists",
+	    "pricesByDay": [
+		"12.47", "13.53"
+	    ]
+	},
+	{
+	    "ticker": "JJ",
+	    "name": "Jackson and Jackson",
+	    "pricesByDay": [
+		"5.55", "10.20"
+	    ]
+	}
+    ]
+}
