@@ -20,6 +20,8 @@ function makeBuyButton(name, price, num_shares) {
 	buyButton.innerHTML = "Buy " + num_shares + " shares<br />for $" + (price * num_shares).toFixed(2);
 	buyButton.onclick = ()=>{
 		var playerMoney = localStorage.getItem("playerMoney");
+		parent.document.getElementById("bank-iframe").contentWindow.location.reload();
+		parent.document.getElementById("stonks-iframe").contentWindow.location.reload();
 		if(playerMoney===null) {
 			alert("Player money should never be null. This is a bug.");
 			console.log("here1");
