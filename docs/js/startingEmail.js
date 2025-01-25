@@ -17,7 +17,28 @@ Your mysterious benefactor`,
     "isReply": false,
     "canReply": "starting-email-reply",
     "isRead": false,
-}, {
+},
+{
+    "id": "park-email",
+    "from": "Creepy Man",
+    "fromEmail": 'creepyman@aol.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Thurs. January 13th 10am',
+    "cc": '',
+    "subject": {
+        "line": "",
+        "options": [],
+    },
+    "content": `Dear Paul,
+Fortune finds me in need of a man on the outside. You can help me. There is a reward in it for you. <button class="functionally-a-button-stylistically-a-link" onclick="clickOnStartingEmailLink()">Look here</button>
+Best,
+Your mysterious benefactor`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
+}
+,{
     "id": "starting-email-reply",
     "from": "Paul (mastertraderpaul98@aol.com)",
     "to": "Creepy Man (creepyman@aol.com)",
