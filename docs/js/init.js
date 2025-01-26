@@ -18,17 +18,15 @@ function init() {
         localStorage.setItem('day', 1)
     }
 	if(localStorage.getItem("playerDebt")===null) {
-		localStorage.setItem("playerDebt", 1000000);
+		localStorage.setItem("playerDebt", 100000);
 	}
 	if(localStorage.getItem('agreedStage')===null) {
 		localStorage.setItem('agreedState', 0)
 	}
 	if(localStorage.getItem("playerMoney")===null) {
-		localStorage.setItem("playerMoney", 10000);
+		localStorage.setItem("playerMoney", 25000);
 		console.log(localStorage);
 	} else {
 		console.log(localStorage);
 	}
-
-    
 }
