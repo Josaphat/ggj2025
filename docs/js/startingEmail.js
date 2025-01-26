@@ -210,9 +210,8 @@ function populateEmail (id) {
     const currentEmail = emails.find(e => e.id === id)
     const emailWindow = document.querySelector(`#email-popup-${id}`)
 
-    const alreadyHasTable = document.querySelector(`#email-popup-${id} table`)
+    emailWindow.innerHTML = ''
 
-    if(!alreadyHasTable) {
         emailWindow.setAttribute('title', currentEmail.subject.line)
         emailWindow.className = 'email-popup'
 
@@ -332,7 +331,6 @@ function populateEmail (id) {
             }
             emailWindow.append(sendButton)
         }
-    }
 
 
 }
