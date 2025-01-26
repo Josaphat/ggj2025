@@ -17,29 +17,28 @@ function make_td() {
 
 function makeBuyButton(name, price, num_shares) {
 	var buyButton = document.createElement("button");
-	buyButton.innerHTML = "Buy " + num_shares + " shares<br />for $" + (price * num_shares).toFixed(2);
+	buyButton.innerHTML = "Buy " + num_shares + " shares<br />for $" + (Number(price) * Number(num_shares)).toFixed(2);
 	buyButton.onclick = ()=>{
 		var playerMoney = localStorage.getItem("playerMoney");
-		parent.document.getElementById("bank-iframe").contentWindow.location.reload();
-		parent.document.getElementById("stonks-iframe").contentWindow.location.reload();
 		if(playerMoney===null) {
 			alert("Player money should never be null. This is a bug.");
 			console.log("here1");
 			console.log(localStorage);
 		}
-		if(playerMoney < num_shares * price) {
+		if(Number(playerMoney) < Number(num_shares) * Number(price)) {
 			alert("You don't have enough money to buy that!");
 			return;
 		}
-		localStorage.setItem("playerMoney", playerMoney - num_shares * price);
+		localStorage.setItem("playerMoney", Number(playerMoney) - Number(num_shares) * Number(price));
 
 		var curShares = localStorage.getItem("playerShares_"+name);
 		if(curShares===null) {
 			curShares = 0;
 		}
 
-		localStorage.setItem("playerShares_"+name, curShares + num_shares)
+		localStorage.setItem("playerShares_"+name, Number(curShares) + Number(num_shares))
 
+		resetIFramesFromIFrames();
 		alert("Bought " + num_shares + " shares of " + name + "! You now have $" + localStorage.getItem("playerMoney"));
 	};
 
@@ -48,28 +47,30 @@ function makeBuyButton(name, price, num_shares) {
 
 function makeSellButton(name, price, num_shares) {
 	var sellButton = document.createElement("button");
-	sellButton.innerHTML = "Sell " + num_shares + " shares<br />for $" + (price * num_shares).toFixed(2);
+	sellButton.innerHTML = "Sell " + Number(num_shares) + " shares<br />for $" + (Number(price) * Number(num_shares)).toFixed(2);
 	sellButton.onclick = ()=>{
 		var curShares = localStorage.getItem("playerShares_"+name);
 		if(curShares===null) {
 			curShares = 0;
 		}
 
-		if(curShares < num_shares || num_shares <= 0) {
+		if(curShares < Number(num_shares) || Number(num_shares) <= 0) {
 			alert("You can't sell any shares. Go get some first.");
 			return;
 		}
 
-		localStorage.setItem("playerShares_"+name, curShares - num_shares);
+		localStorage.setItem("playerShares_"+name, Number(curShares) - Number(num_shares));
 
 		var playerMoney = localStorage.getItem("playerMoney");
 		if(playerMoney===null) {
 			alert("Player money should never be null. This is a bug.");
 		}
 
-		localStorage.setItem("playerMoney", playerMoney + num_shares * price);
+		localStorage.setItem("playerMoney", Number(playerMoney) + Number(num_shares) * Number(price));
 
 		alert("Sold " + num_shares + " shares of " + name + "! You now have $" + localStorage.getItem("playerMoney"));
+
+		resetIFramesFromIFrames();
 	};
 
 	return sellButton;
@@ -84,7 +85,7 @@ function populate_table(stonks) {
     for (var stonk of all) {
 
 	// FIXME: Dynamic price
-	var priceString = stonk.pricesByDay[0];
+	var priceString = stonk.pricesByDay[localStorage.getItem("day")-1];
 	var unitPrice = parseFloat(priceString);
 
 	// FIXME: Load the number of shares that the player has

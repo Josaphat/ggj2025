@@ -117,7 +117,7 @@ class Menu extends HTMLElement {
 				}
 			</style>
 			<div>
-				<div id="title" part="title" style="position: relative; bottom: 4px;">${this.name}</div>
+				<div id="title" part="title" style="position: relative; bottom: 4px;"><img style="height: 16px; width: 16px; margin-right: 5px;" src="assets/gnome_icons/Gnome-emblem-photos.svg.png_32.png" />${this.name}</div>
 				<div id="menu" part="window"><slot></slot></div>
 			</div>
 		`;
