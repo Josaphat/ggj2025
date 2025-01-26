@@ -21,3 +21,15 @@ h2 {
 a {
     color: cadetblue;
 }
+
+.theleftcol {
+    min-width: 400px;
+    margin-right: 24px;
+}
+
+.therightcol {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
