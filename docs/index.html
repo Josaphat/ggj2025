@@ -98,6 +98,16 @@
 				</div>
 			</fos-icon>
 
+			<!-- Credits Icon -->
+			<fos-icon fixed="true" href="credits" style="background-color: transparent; box-shadow: none;">
+			  <div>
+			    <table style="text-align: center; background-color: transparent;">
+			      <tr><td><img src="assets/gnome_icons/Gnome-help-about.svg.png_32.png"></td></tr>
+			      <tr><td><p class="icon-text">Credits</p></td></tr>
+			    </table>
+			  </div>
+			</fos-icon>
+
 			</div> <!-- End icons section -->
 
 			<!-- WINDOW DEFINITIONS BELOW -->
@@ -141,6 +151,11 @@
 				<iframe id="raw-webring-iframe" src="./raw-webring.html" style="min-height: 50vh; min-width: 50vw; height: 100%; width: 100%;"></iframe>
 			</fos-window>
   
+			<!-- Credits window  -->
+			<fos-window name="credits" title="Credits" style="max-height:95%;">
+			  <iframe id="credits-iframe" src="credits.html" style="min-height: 50vh; min-width: 50vw; height: 100%; width: 100%;"></iframe>
+			</fos-window>
+
 
 	  <!-- Start menu bar -->
 	  <div id="fos-fake-bar" style="box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;">
