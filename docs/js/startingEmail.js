@@ -171,6 +171,12 @@ function populateInbox () {
     if (Number(currentDay) === 2) {
         addEmails(emailsInbox, emailInboxTableBody, (email) => (email.day === 2 || email.day === 1))
     }
+    if (Number(currentDay) === 3) {
+        const playerSharesOfPOG = localStorage.getItem('playerShares_Philippines Offshore Gambling')
+        if (Number(playerSharesOfPOG) >= 100) {
+            addEmails(emailsInbox, emailInboxTableBody, (email) => (email.day === 2 || email.day === 1 || (email.day === 3 && email.id === 'congrats-email')))
+        }
+    }
 
     emailsInbox.append(emailInboxTable)
 }
