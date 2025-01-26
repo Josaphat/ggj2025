@@ -151,6 +151,8 @@ function addEmails (emailsInbox, emailInboxTableBody, condition) {
 
 function populateInbox () {
     const emailsInbox = document.querySelector('#emails-inbox')
+
+
     emailsInbox.innerHTML = ''
 
     localStorage.setItem('emailsFetched', true)
