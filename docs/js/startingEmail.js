@@ -1,5 +1,6 @@
 const emails = [{
     "id": "starting-email",
+    "day": 1,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
@@ -20,19 +21,20 @@ Your mysterious benefactor`,
 },
 {
     "id": "park-email",
+    "day": 2,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
-    "received": 'Thurs. January 13th 10am',
+    "received": 'Thurs. January 13th 6am',
     "cc": '',
     "subject": {
-        "line": "",
+        "line": "Go West, Young Man",
         "options": [],
     },
-    "content": `Dear Paul,
-Fortune finds me in need of a man on the outside. You can help me. There is a reward in it for you. <button class="functionally-a-button-stylistically-a-link" onclick="clickOnStartingEmailLink()">Look here</button>
-Best,
+    "content": `Good morning Paul,
+Hope your stonks have been treating you well. If not, well better get yourself together, for money waits for no man. I recall years ago being told I went a bridge too far back when I was on the "up and up" as a big trader. It irked me at the time, but I recall in the day I was writing my *ahem* hints, that it ended up being unexpectedly relevant. Let that be your guiding light for today.
+Best of luck, friend. I will be watching.
 Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
@@ -67,14 +69,15 @@ Your mysterious benefactor`,
 function addEmails (emailsInbox, emailInboxTableBody, condition) {
     emails.filter(condition).forEach((email, index) => {
         const buttonOverlay = document.createElement('button')
-        buttonOverlay.className = "not-ninety-eight-style"
+        buttonOverlay.className = `not-ninety-eight-style email-button-${email.id}`
         buttonOverlay.onclick = () => onEmailClick(email.id)
-        buttonOverlay.style = `width: 100%; height: ${16 * (index + 1)}px; position: absolute; top: ${16 * (index + 1)}px; z-index: 1000;`
+        buttonOverlay.style = `width: 100%; height: 16px; position: absolute; top: ${16 * (index + 1)}px; z-index: 1000;`
 
         emailsInbox.append(buttonOverlay)
 
         const tableRow = document.createElement('tr')
         tableRow.className = `email-overlay email-overlay-${email.id}`
+        
 
         emailInboxTableBody.append(tableRow)
 
@@ -106,51 +109,51 @@ function addEmails (emailsInbox, emailInboxTableBody, condition) {
 }
 
 function populateInbox () {
-    // LocalStorage Get
-    const currentStonks = []
-
     const emailsInbox = document.querySelector('#emails-inbox')
+    emailsInbox.innerHTML = ''
 
-    const alreadyHasTable = document.querySelector(`#emails-inbox table`)
+    localStorage.setItem('emailsFetched', true)
+    emailsInbox.setAttribute('title', "Paul's Email")
 
-    if (!alreadyHasTable) {
-        emailsInbox.setAttribute('title', "Paul's Email")
+    const emailInboxTable = document.createElement('table')
+    emailInboxTable.className = 'email-container'
 
-        const emailInboxTable = document.createElement('table')
-        emailInboxTable.className = 'email-container'
+    const emailInboxTableHeader = document.createElement('thead')
+    emailInboxTable.append(emailInboxTableHeader)
 
-        const emailInboxTableHeader = document.createElement('thead')
-        emailInboxTable.append(emailInboxTableHeader)
+    const emailInboxTableHeaderRow = document.createElement('tr')
+    emailInboxTableHeader.append(emailInboxTableHeaderRow)
 
-        const emailInboxTableHeaderRow = document.createElement('tr')
-        emailInboxTableHeader.append(emailInboxTableHeaderRow)
+    const emailInboxTableHeaderRowEmpty = document.createElement('th')
+    emailInboxTableHeaderRowEmpty.style = 'width: 16px;'
+    emailInboxTableHeaderRow.append(emailInboxTableHeaderRowEmpty)
 
-        const emailInboxTableHeaderRowEmpty = document.createElement('th')
-        emailInboxTableHeaderRowEmpty.style = 'width: 16px;'
-        emailInboxTableHeaderRow.append(emailInboxTableHeaderRowEmpty)
+    const emailInboxTableHeaderRowFrom= document.createElement('th')
+    emailInboxTableHeaderRowFrom.textContent = 'From'
+    emailInboxTableHeaderRow.append(emailInboxTableHeaderRowFrom)
 
-        const emailInboxTableHeaderRowFrom= document.createElement('th')
-        emailInboxTableHeaderRowFrom.textContent = 'From'
-        emailInboxTableHeaderRow.append(emailInboxTableHeaderRowFrom)
+    const emailInboxTableHeaderRowSubject= document.createElement('th')
+    emailInboxTableHeaderRowSubject.textContent = 'Subject'
+    emailInboxTableHeaderRow.append(emailInboxTableHeaderRowSubject)
 
-        const emailInboxTableHeaderRowSubject= document.createElement('th')
-        emailInboxTableHeaderRowSubject.textContent = 'Subject'
-        emailInboxTableHeaderRow.append(emailInboxTableHeaderRowSubject)
+    const emailInboxTableHeaderRowReceived= document.createElement('th')
+    emailInboxTableHeaderRowReceived.textContent = 'Received'
+    emailInboxTableHeaderRow.append(emailInboxTableHeaderRowReceived)
 
-        const emailInboxTableHeaderRowReceived= document.createElement('th')
-        emailInboxTableHeaderRowReceived.textContent = 'Received'
-        emailInboxTableHeaderRow.append(emailInboxTableHeaderRowReceived)
+    const emailInboxTableBody = document.createElement('tbody')
+    emailInboxTable.append(emailInboxTableBody)
 
-        const emailInboxTableBody = document.createElement('tbody')
-        emailInboxTable.append(emailInboxTableBody)
-    
-        if (currentStonks.length === 0) { 
-            addEmails(emailsInbox, emailInboxTableBody, (email) => email.received === 'Wed. January 12th 2pm')
-        }
-
-        emailsInbox.append(emailInboxTable)
+    const currentDay = localStorage.getItem('day')
+    if (Number(currentDay) === 1) { 
+        addEmails(emailsInbox, emailInboxTableBody, (email) => email.day === 1)
     }
+    if (Number(currentDay) === 2) {
+        addEmails(emailsInbox, emailInboxTableBody, (email) => (email.day === 2 || email.day === 1))
+    }
+
+    emailsInbox.append(emailInboxTable)
 }
+
 
 function populateEmail (id) {
     const currentEmail = emails.find(e => e.id === id)

@@ -57,10 +57,16 @@ fos-window, fos-menu {
     padding: 12px;
 }
 
-button:hover ~ table .email-overlay {
+.email-button-starting-email:hover ~ table .email-overlay-starting-email {
    background-color: #39107b !important;
    color: white;
 }
+
+.email-button-park-email:hover ~ table .email-overlay-park-email {
+    background-color: #39107b !important;
+    color: white;
+ }
+ 
 
 .email-is-read {
     background-color: #dce4e4
@@ -77,6 +83,7 @@ button:hover ~ table .email-overlay {
 
 .email-popup {
     background-color: #bdc1c2;
+    width: 30vw;
 }
 
 .email-message-container {

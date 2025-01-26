@@ -11,6 +11,14 @@ function onEmailClick(emailId) {
     emailWindow.style.setProperty('display', 'block')
 }
 
+function resetWindows() {
+    const allWindows = document.getElementsByTagName('fos-window')
+
+    Array.from(allWindows).forEach((window) => {
+        window.style = 'display: none;'
+    })
+}
+
 let intervalId
 let progressIndication
 const TOTAL_PROGRESS_TIME = 10000
@@ -32,13 +40,15 @@ function onLogoffClick() {
 
         if (progressIndication >= TOTAL_PROGRESS_TIME) {
             clearInterval(intervalId)
-             const logOffScreen = document.querySelector('#logoff-screen')
+            resetWindows()
+            const logOffScreen = document.querySelector('#logoff-screen')
             logOffScreen.style = "display: none;"
 
             const currDay = localStorage.getItem('day')
             if(currDay) {
                 localStorage.setItem('day', Number(currDay) + 1)
-            } else {
+                localStorage.setItem('emailsFetched', false)
+        } else {
                 console.error('no day set')
             }
         }
