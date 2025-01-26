@@ -4,7 +4,7 @@ const emails = [
 		"id": "starting-email",
 		"cond": function() {return this.day == Number(localStorage.getItem("day"))},
 		"day": 1,
-		"from": "Creepy Man",
+		"from": "C. Mann",
 		"fromEmail": 'creepyman@aol.com',
 		"to": "Paul",
 		"toEmail": 'mastertraderpaul98@aol.com',
@@ -26,7 +26,7 @@ Your mysterious benefactor`,
     "id": "starting-email-reply",
 	"cond": function() { return false; },
     "from": "Paul (mastertraderpaul98@aol.com)",
-    "to": "Creepy Man (creepyman@aol.com)",
+    "to": "C. Mann (creepyman@aol.com)",
     "cc": '',
     "subject": {
         "line": "Re: Want Money?",
@@ -73,11 +73,11 @@ Dr. Lawrence, MD.`,
 },
 // END DAY 1 STORY EMAIL
 
-{ // START DAY 2 STORY EMAIL
+{ // START DAY 1 STORY EMAIL - Part Two
     "id": "park-email",
-	"cond": function() {return this.day == Number(localStorage.getItem("day"))},
-    "day": 2,
-    "from": "Creepy Man",
+	"cond": function() {return (this.day == Number(localStorage.getItem("day")) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes')},
+    "day": 1,
+    "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
@@ -94,15 +94,15 @@ Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
     "isRead": false,
-}, // END DAY 2 STORY EMAIL
+}, // END DAY 1 STORY EMAIL
 
 { 
-    // START DAY 3 STORY EMAIL
+    // START DAY TWO STORY EMAIL
     // START WIN EMAIL
     "id": "congrats-email",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
-    "day": 3,
-    "from": "Creepy Man",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+    "day": 2,
+    "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
@@ -123,9 +123,9 @@ Your mysterious benefactor`,
 },
 { // START LOSE EMAIL
     "id": "not-congrats-email",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100},
-    "day": 3,
-    "from": "Creepy Man",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+    "day": 2,
+    "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
@@ -144,10 +144,10 @@ Your mysterious benefactor`,
     "canReply": "",
     "isRead": false,
 }, 
-{   // START DAY 3 DOCTOR EMAIL
+{   // START DAY TWO DOCTOR EMAIL
     "id": "doctor-email-day-three",
     "cond": function() {return this.day == Number(localStorage.getItem("day"))},
-    "day": 3,
+    "day": 2,
     "from": "Dr. Lawrence",
     "fromEmail": 'jlawrence@yahoo.com',
     "to": "Paul",
@@ -166,11 +166,11 @@ Dr. Lawrence, MD.`,
     "canReply": "doctor-email-day-three-response",
     "isRead": false,
 }, 
-// START DAY THREE DOCTOR EMAIL REPLY
+// START DAY TWO DOCTOR EMAIL REPLY
 {
     "id": "doctor-email-day-three-response",
     "cond": function() {return false},
-    "day": 3,
+    "day": 2,
     "from": "Paul",
     "fromEmail": 'mastertraderpaul98@aol.com',
     "to": "Dr. Lawrence",
@@ -197,12 +197,12 @@ Paul`
     "canSend": true,
 }, 
 {
-    // START DAY FOUR
+    // START DAY THREE
     // START WIN EMAIL
     "id": "congrats-email-day-four",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) >= 100},
-    "day": 4,
-    "from": "Creepy Man",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) >= 100 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+    "day": 3,
+    "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
@@ -226,9 +226,9 @@ Your mysterious benefactor`,
 {
     // START LOSE EMAIL
     "id": "not-congrats-email-day-four",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) < 100},
-    "day": 4,
-    "from": "Creepy Man",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) < 100 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+    "day": 3,
+    "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
@@ -252,8 +252,8 @@ Your mysterious benefactor`,
 {
     // START DOCTOR EMAIL
     "id": "doctor-email-day-four",
-    "cond": function() {return (this.day == Number(localStorage.getItem("day")) && localStorage.getItem('optionResponsedoctor-email-day-three-response') !== null)},
-    "day": 4,
+    "cond": function() {return (this.day === Number(localStorage.getItem("day")) && localStorage.getItem('optionResponsedoctor-email-day-three-response') !== null)},
+    "day": 3,
     "from": "Dr. Lawrence",
     "fromEmail": 'jlawrence@yahoo.com',
     "to": "Paul",
@@ -271,8 +271,99 @@ Dr. Lawrence, MD.`,
     "isReply": false,
     "canReply": "",
     "isRead": false,
+},
+// END DAY THREE
+{
+    // START DAY FOUR
+    // START WIN EMAIL
+    "id": "congrats-email-day-five",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && (Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 100 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 100 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 100) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+    "day": 4,
+    "from": "C. Mann",
+    "fromEmail": 'creepyman@aol.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Wed. November 12th 7am',
+    "cc": '',
+    "subject": {
+        "line": "Winner Winner, Chicken Dinner",
+        "options": [],
+    },
+    "content": `Dearest Paul,
+Magnificent, truly magnificent. You warm the cockles of my old, stock-trader's heart. I can only hope that you, too, will reap the benefits of this choice.
+Fondest Farewells,
+Your mysterious benefactor`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
+},
+{
+    // START DOCTOR EMAIL
+    "id": "doctor-email-day-five",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && (Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 100 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 100 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 100) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+    "day": 4,
+    "from": "Dr. Lawrence",
+    "fromEmail": 'jlawrence@yahoo.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Wed. November 12th 8am',
+    "cc": '',
+    "subject": {
+        "line": "Are you ok",
+        "options": [],
+    },
+    "content": `Dear Paul,
+Look, I know you're a busy man but you haven't gotten back to me in a while. Given what the test results said...I'm worried. Could you please let me know if you're okay then we can start you on some meds to fix this.
+Best,
+Dr. Lawrence`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
+},
+{
+    // START LOSE EMAIL
+    "id": "not-congrats-email-day-five",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && !(Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 100 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 100 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 100) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+    "day": 4,
+    "from": "C. Mann",
+    "fromEmail": 'creepyman@aol.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Wed. November 12th 7am',
+    "cc": '',
+    "subject": {
+        "line": "LOSS",
+        "options": [],
+    },
+    "content": `Well Paul, I hope you're happy`,
+    "isReply": false,
+    "canReply": "not-congrats-email-day-five-response",
+    "isRead": false,
+}, // END LOSE EMAIL
+{
+    // START LOSE EMAIL RESPONSE
+    "id": "not-congrats-email-day-five-response",
+	"cond": function() {return false},
+    "day": 4,
+    "from": "Paul",
+    "fromEmail": 'mastertraderpaul98@aol.com',
+    "to": "C. Mann",
+    "toEmail": 'creepyman@aol.com',
+    "received": 'Wed. November 12th 7am',
+    "cc": '',
+    "subject": {
+        "line": "Re: LOSS My Response.",
+        "options": [{
+            "value": 'yes',
+            "text": "Re: LOSS My Response",
+            "content": "No. But I think I will be."
+        }],
+    },
+    "content": '',
+    "isReply": true,
+    "canReply": "",
+    "canSend": true,
+    "isRead": false,
 }
 // END DAY FOUR
-// START DAY 1 FAMILY EMAIL
-// END DAY 1 FAMILY EMAIL
 ].concat(news_emails).concat(family_emails);

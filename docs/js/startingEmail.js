@@ -242,12 +242,24 @@ function populateEmail (id) {
             emailWindow.append(emailContent)
         }
 
+        console.log(`optionResponse${currentEmail.canReply}`)
+        console.log(localStorage.getItem(`optionResponse${currentEmail.canReply}`))
         if (currentEmail.canReply) {
-            const replyButton = document.createElement('button')
-            replyButton.className = 'reply-button'
-            replyButton.textContent = "Reply"
-            replyButton.onclick = () => {onEmailClick(currentEmail.canReply)}
-            emailWindow.append(replyButton)
+            if ((localStorage.getItem(`optionResponse${currentEmail.canReply}`) === null)) {
+                const replyButton = document.createElement('button')
+                replyButton.className = `reply-button reply-button-${currentEmail.canReply}`
+                replyButton.textContent = "Reply"
+                replyButton.onclick = () => {onEmailClick(currentEmail.canReply)}
+                emailWindow.append(replyButton)
+            } else {
+                const replyButton = document.createElement('button')
+                replyButton.className = `reply-button reply-button-${currentEmail.canReply}`
+                replyButton.setAttribute('disabled', true)
+                replyButton.textContent = "Replied"
+                replyButton.onclick = () => {onEmailClick(currentEmail.canReply)}
+                emailWindow.append(replyButton)
+            }
+            
         }
 
         if(currentEmail.canSend) {
@@ -282,11 +294,16 @@ function sendEmail (id, hasOptions) {
 
 		console.log(`optionResponse${id} = ${selected}`);
         localStorage.setItem(`optionResponse${id}`, selected)
+
+        populateInbox()
     }
 
     const emailWindow = document.querySelector(`#email-popup-${id}`)
     emailWindow.style.setProperty('display', 'none')
 
+    const replyButton = document.querySelector(`.reply-button-${id}`)
+    replyButton.setAttribute('disabled', true)
+    replyButton.textContent = 'Replied'
 }
 
 function clickOnStartingEmailLink () {
