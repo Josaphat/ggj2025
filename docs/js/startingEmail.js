@@ -282,6 +282,8 @@ function sendEmail (id, hasOptions) {
 
 		console.log(`optionResponse${id} = ${selected}`);
         localStorage.setItem(`optionResponse${id}`, selected)
+
+        populateInbox()
     }
 
     const emailWindow = document.querySelector(`#email-popup-${id}`)
