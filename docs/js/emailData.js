@@ -15,7 +15,7 @@ const emails = [
 			"options": [],
 		},
 		"content": `Dear Paul,
-Fortune finds me in need of a man on the outside. You can help me. There is a reward in it for you. <button class="functionally-a-button-stylistically-a-link" onclick="clickOnStartingEmailLink()">Look here</button>
+Fortune finds me in need of a man on the outside. You can help me. There is a reward in it for you.
 Best,
 Your mysterious benefactor`,
 		"isReply": false,
@@ -74,7 +74,7 @@ Your mysterious benefactor`,
 }, // END DAY 2 STORY EMAIL
 { // START WIN EMAIL
     "id": "congrats-email",
-	"cond": function() {return this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
     "day": 3,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
@@ -97,7 +97,7 @@ Your mysterious benefactor`,
 },
 { // START LOSE EMAIL
     "id": "not-congrats-email",
-	"cond": function() {return this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100},
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100},
     "day": 3,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
@@ -113,6 +113,55 @@ Your mysterious benefactor`,
 Ah, an unfortunate pick. Admittedly, it would be hard in your...condition, but you must remember a gamble can really pay off. Now then...
 Are you hungry, Paul? I know you're hungry for money. But say you go get some real food - maybe, sit down, have a drink. I did that once, a good...while ago and noticed that some things on the menu happened to correspond with the stonks I was looking at. But, of course - only when I took into account where I was that moment in my life.
 Better luck next time, friend. I will be watching.
+Your mysterious benefactor`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
+}, {
+    "id": "congrats-email-day-four",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) >= 100},
+    "day": 4,
+    "from": "Creepy Man",
+    "fromEmail": 'creepyman@aol.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Wed. November 12th 7am',
+    "cc": '',
+    "subject": {
+        "line": "Let Paul cook",
+        "options": [],
+    },
+    "content": `Salutations Paul,
+A clever pick, it's a fine thing to know that you found my words so enlightening.
+Now, the end times are upon us. You must visit the page for a place that is very near and dear to my heart... a place that I visited the the only time the stonks got the better of me and I found myself bathed in fear.
+It no longer remains, but the city remembers it, as it remembers everything.
+<em>Pro nobis oculis solis</em>
+Best of luck,
+Your mysterious benefactor`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
+},
+{
+    "id": "not-congrats-email-day-four",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) < 100},
+    "day": 4,
+    "from": "Creepy Man",
+    "fromEmail": 'creepyman@aol.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Wed. November 12th 7am',
+    "cc": '',
+    "subject": {
+        "line": "Starved",
+        "options": [],
+    },
+    "content": `Salutations Paul,
+An unfortunate pick, I had hoped you would find my words more enlightening.
+But now, the end times are upon us. You must visit the page for a place that is very near and dear to my heart... a place that I visited the the only time the stonks got the better of me and I found myself bathed in fear.
+It no longer remains, but the city remembers it, as it remembers everything.
+<em>Pro nobis oculis solis</em>
+Best of luck,
 Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
