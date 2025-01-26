@@ -39,6 +39,27 @@ Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
     "isRead": false,
+},
+{
+    "id": "congrats-email",
+    "day": 3,
+    "from": "Creepy Man",
+    "fromEmail": 'creepyman@aol.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Thurs. January 14th 7am',
+    "cc": '',
+    "subject": {
+        "line": "Poggers",
+        "options": [],
+    },
+    "content": `Fair Tidings Paul,
+I see you have made the correct choice. Sometimes a gamble really pays off, doesn't it?
+Best of luck, friend. I will be watching.
+Your mysterious benefactor`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
 }
 ,{
     "id": "starting-email-reply",
@@ -274,7 +295,11 @@ function populateEmail (id) {
             const sendButton = document.createElement('button')
             sendButton.className = 'reply-button'
             sendButton.textContent = "Send"
-            sendButton.onclick = () => {sendEmail(currentEmail.id)}
+            if(currentEmail.subject.options.length >=0) {
+                sendButton.onclick = () => {sendEmail(currentEmail.id, true)}
+            } else {
+                sendButton.onclick = () => {sendEmail(currentEmail.id, false) }
+            }
             emailWindow.append(sendButton)
         }
     }
@@ -289,14 +314,25 @@ function onOptionChange(arg, id) {
     const emailText = document.querySelector(`#email-message-container-${id}`)
     emailText.innerHTML = emails.find(e => e.id === id)?.subject.options.find(o => o.value === optionPicked).content
 }
-function sendEmail (id) {
-    const emailWindow = document.querySelector(`#email-popup-${id}`)
+function sendEmail (id, hasOptions) {
+    if (hasOptions) {
+        const optionSelect = document.getElementsByName('email-responses')
 
+        const selectedOption = Array.from(optionSelect)[0]
+
+        const selected = selectedOption.options[selectedOption.selectedIndex].value
+
+        localStorage.setItem(`optionResponse${id}`, selected)
+    }
+
+    const emailWindow = document.querySelector(`#email-popup-${id}`)
     emailWindow.style.setProperty('display', 'none')
+
 }
 
 function clickOnStartingEmailLink () {
     const emailWindow = document.querySelector(`#terrence-archive-popup`)
+    parent.document.getElementById("terrence-archive-iframe").contentWindow.location.reload();
 
     emailWindow.style.setProperty('display', 'block')
 }

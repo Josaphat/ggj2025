@@ -2,12 +2,14 @@ function resetIFrames() {
 	console.log(document);
 	document.getElementById("bank-iframe").contentWindow.location.reload();
 	document.getElementById("stonks-iframe").contentWindow.location.reload();
+	document.getElementById("raw-webring-iframe").contentWindow.location.reload();
 }
 
 function resetIFramesFromIFrames() {
 	console.log(parent.document);
 	parent.document.getElementById("bank-iframe").contentWindow.location.reload();
 	parent.document.getElementById("stonks-iframe").contentWindow.location.reload();
+	parent.document.getElementById("raw-webring-iframe").contentWindow.location.reload();
 }
 
 function init() {
@@ -17,6 +19,9 @@ function init() {
     }
 	if(localStorage.getItem("playerDebt")===null) {
 		localStorage.setItem("playerDebt", 1000000);
+	}
+	if(localStorage.getItem('agreedStage')===null) {
+		localStorage.setItem('agreedState', 0)
 	}
 	if(localStorage.getItem("playerMoney")===null) {
 		localStorage.setItem("playerMoney", 10000);
