@@ -55,6 +55,16 @@
 				</div>
 			</fos-icon>
 
+			<!-- Stonks icon -->
+            <fos-icon fixed="true" href="stonks" style="background-color: transparent; box-shadow: none; flex-wrap: wrap;">
+				<div>
+					<table style="text-align: center; background-color: transparent;">
+					<tr><td><img src="./assets/gnome_icons/Emblem-money.svg.png_32.png" height="50vw" width="50vh"></img></td></tr>
+					<tr><td><p style="color: lightgray; font-size: 16px; font-weight: normal;">Stonks 'R' Us</p></td></tr>
+					</table>
+				</div>
+			</fos-icon>
+
 			<!-- Copilot icon -->
             <fos-icon fixed="true" href="copilot" style="background-color: transparent; box-shadow: none;">
 				<div>
@@ -65,16 +75,7 @@
 				</div>
 			</fos-icon>
 
-			<!-- Stonks icon -->
-            <fos-icon fixed="true" href="stonks" style="background-color: transparent; box-shadow: none; flex-wrap: wrap;">
-				<div>
-					<table style="text-align: center; background-color: transparent;">
-					<tr><td><img src="./assets/gnome_icons/Emblem-money.svg.png_32.png" height="50vw" width="50vh"></img></td></tr>
-					<tr><td><p style="color: lightgray; font-size: 16px; font-weight: normal;">Stonks 'R' Us</p></td></tr>
-					</table>
-				</div>
-			</fos-icon>
-			</div>
+			</div> <!-- End icons section -->
 
 			<!-- WINDOW DEFINITIONS BELOW -->
 
@@ -115,13 +116,23 @@
       <fos-window name="w5" id="email-popup-starting-email-reply">
       </fos-window>
   
-      <fos-bar class="ms-button" style="text-align: center;">
+
+	  <!-- Start menu bar -->
+	  <div id="fos-fake-bar" style="box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;">
+	  <!-- Start menu button -->
+      <fos-bar class="ms-button" style="text-align: center; height: 75%; bottom: 10%;">
           <fos-menu name="Start" style="font-weight: bold; font-size: 16px;">
               <fos-menu-item href="w1" style="width: 25vh;">
                   <button onclick="onLogoffClick()" style="font-size: 12px;">Log Off</button>
               </fos-menu-item>
           </fos-menu>
       </fos-bar>
+
+	  <!-- Time display -->
+	  <div id="timebox" style="width: 75px; position: absolute; right: 5px; z-index: 1000; bottom: 5px; box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a; height: 75%; text-align: center;"><p style="bottom: 50%;">11/9/1998</p></div>
+	</div>
+
+
 
      
         </fos-desktop>
