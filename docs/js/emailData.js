@@ -48,7 +48,30 @@ Your mysterious benefactor`,
     "canReply": "",
     "canSend": true,
     "isRead": true,
-}, // END DAY 1 STORY EMAIL
+}, {
+    "id": "doctor-email-day-one",
+    "cond": function() {return this.day == Number(localStorage.getItem("day"))},
+    "day": 1,
+    "from": "Dr. Lawrence",
+    "fromEmail": 'jlawrence@yahoo.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Mon. November 9th 10pm',
+    "cc": '',
+    "subject": {
+        "line": "Test Results In",
+        "options": [],
+    },
+    "content": `Hello Paul,
+We are pleased to tell you your test results are in. Please give us a call to get them!
+Best,
+Best Wishes,
+Dr. Lawrence, MD.`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
+},
+// END DAY 1 STORY EMAIL
 
 { // START DAY 2 STORY EMAIL
     "id": "park-email",
@@ -72,7 +95,10 @@ Your mysterious benefactor`,
     "canReply": "",
     "isRead": false,
 }, // END DAY 2 STORY EMAIL
-{ // START WIN EMAIL
+
+{ 
+    // START DAY 3 STORY EMAIL
+    // START WIN EMAIL
     "id": "congrats-email",
 	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
     "day": 3,
@@ -117,7 +143,62 @@ Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
     "isRead": false,
-}, {
+}, 
+{   // START DAY 3 DOCTOR EMAIL
+    "id": "doctor-email-day-three",
+    "cond": function() {return this.day == Number(localStorage.getItem("day"))},
+    "day": 3,
+    "from": "Dr. Lawrence",
+    "fromEmail": 'jlawrence@yahoo.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Mon. November 11th 8am',
+    "cc": '',
+    "subject": {
+        "line": "Test Results In - Please Contact Me!",
+        "options": [],
+    },
+    "content": `Hello Paul,
+I wanted to check in about your test - did you get my previous email? Please give me a call if you have the chance, you should see this.
+Best Wishes,
+Dr. Lawrence, MD.`,
+    "isReply": false,
+    "canReply": "doctor-email-day-three-response",
+    "isRead": false,
+}, 
+// START DAY THREE DOCTOR EMAIL REPLY
+{
+    "id": "doctor-email-day-three-response",
+    "cond": function() {return false},
+    "day": 3,
+    "from": "Paul",
+    "fromEmail": 'mastertraderpaul98@aol.com',
+    "to": "Dr. Lawrence",
+    "toEmail": 'jlawrence@yahoo.com',
+    "received": 'Mon. November 11th 2pm',
+    "cc": '',
+    "subject": {
+        "line": "Re: Test Results In - Please Contact Me!",
+        "options": [
+            {
+                "value": "yes",
+                "text": "Re: Test Results In - Please Contact Me! Making contact",
+                "content":  `Dear Dr. Lawrence,
+Thanks for getting in contact. I've been a little busy recently, but if you could send the test results by email, I could read them.
+Thanks,
+Paul`
+            }
+        ],
+    },
+    "content": "",
+    "isReply": true,
+    "canReply": "",
+    "isRead": false,
+    "canSend": true,
+}, 
+{
+    // START DAY FOUR
+    // START WIN EMAIL
     "id": "congrats-email-day-four",
 	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) >= 100},
     "day": 4,
@@ -143,6 +224,7 @@ Your mysterious benefactor`,
     "isRead": false,
 },
 {
+    // START LOSE EMAIL
     "id": "not-congrats-email-day-four",
 	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) < 100},
     "day": 4,
@@ -166,5 +248,29 @@ Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
     "isRead": false,
-} // END LOSE EMAIL
+}, // END LOSE EMAIL
+{
+    // START DOCTOR EMAIL
+    "id": "doctor-email-day-four",
+    "cond": function() {return (this.day == Number(localStorage.getItem("day")) && localStorage.getItem('optionResponsedoctor-email-day-three-response') !== null)},
+    "day": 4,
+    "from": "Dr. Lawrence",
+    "fromEmail": 'jlawrence@yahoo.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Mon. November 12th 8am',
+    "cc": '',
+    "subject": {
+        "line": "PLEASE CALL ME",
+        "options": [],
+    },
+    "content": `Paul,
+That would be a HIPPAA violation, so I'm not going to do that. What I am going to say is that your blood pressure is through the roof, and your heart is taking the brunt, which is BAD.
+CALL ME, and whatever you're doing that's stressing you out this much, STOP. Your life may depend on it.
+Dr. Lawrence, MD.`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
+}
+// END DAY FOUR
 ].concat(news_emails);
