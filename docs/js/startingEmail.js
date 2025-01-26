@@ -1,7 +1,7 @@
 const emails = [
 	{
 		"id": "starting-email",
-		"cond": function() {this.day <= Number(localStorage.getItem("day"))},
+		"cond": function() {return this.day <= Number(localStorage.getItem("day"))},
 		"day": 1,
 		"from": "Creepy Man",
 		"fromEmail": 'creepyman@aol.com',
@@ -23,7 +23,7 @@ Your mysterious benefactor`,
 	},
 {
     "id": "park-email",
-	"cond": function() {this.day <= Number(localStorage.getItem("day"))},
+	"cond": function() {return this.day <= Number(localStorage.getItem("day"))},
     "day": 2,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
@@ -45,7 +45,7 @@ Your mysterious benefactor`,
 },
 {
     "id": "congrats-email",
-	"cond": function() {this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
+	"cond": function() {return this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
     "day": 3,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
@@ -66,7 +66,7 @@ Your mysterious benefactor`,
     "isRead": false,
 }, {
     "id": "not-congrats-email",
-	"cond": function() {this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100},
+	"cond": function() {return this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100},
     "day": 3,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
@@ -88,6 +88,7 @@ Your mysterious benefactor`,
 }
 ,{
     "id": "starting-email-reply",
+	"cond": function() { return false; },
     "from": "Paul (mastertraderpaul98@aol.com)",
     "to": "Creepy Man (creepyman@aol.com)",
     "cc": '',
@@ -114,6 +115,7 @@ Your mysterious benefactor`,
 },
 	{
 		"id": "news-day-2",
+		"cond": function() {return this.day <= Number(localStorage.getItem("day"))},
 		"day": 2,
 		"from": "Newsletter",
 		"fromEmail": 'news@aol.com',
@@ -133,6 +135,7 @@ Bills win again`,
 	},
 	{
 		"id": "news-day-2-reply",
+		"cond": function() { return false; },
 		"from": "Paul (mastertraderpaul98@aol.com)",
 		"to": "AOL Blast (news@aol.com)",
 		"cc": '',
@@ -153,13 +156,32 @@ Bills win again`,
 		"isRead": true,
 	},
 ]
-function addEmails (emailsInbox, emailInboxTableBody, condition) {
+function addEmails (emailsInbox, emailInboxTableBody) {
 	var count = 0;
-    emails.filter(condition).forEach((email, index) => {
+	var added = 0;
+    emails.forEach((email, index) => {
+		// Add a window for the email to the desktop
+		var desktop = document.getElementById("desktop");
+		var win = document.createElement('fos-window');
+		win.name = "email-day-"+localStorage.getItem("day")+"-num-"+count;
+		win.id = "email-popup-"+email.id;
+		desktop.append(win);
+		// alert("appended " + win.id);
+		count += 1;
+
+		if(!email.cond()) {
+			console.log(email.cond);
+			console.log("nope")
+			return;
+		}
+		console.log("adding")
+
         const buttonOverlay = document.createElement('button')
         buttonOverlay.className = `not-ninety-eight-style email-button-${email.id}`
         buttonOverlay.onclick = () => onEmailClick(email.id)
-        buttonOverlay.style = `width: 100%; height: 16px; position: absolute; top: ${16 * (index + 1)}px; z-index: 1000;`
+        buttonOverlay.style = `width: 100%; height: 16px; position: absolute; top: ${16 * (added + 1)}px; z-index: 1000;`
+
+		added += 1;
 
         emailsInbox.append(buttonOverlay)
 
@@ -233,7 +255,7 @@ function populateInbox () {
     const emailInboxTableBody = document.createElement('tbody')
     emailInboxTable.append(emailInboxTableBody)
 
-	addEmails(emailsInbox, emailInboxTableBody, (email) => email.day === Number(localStorage.getItem("day")));
+	addEmails(emailsInbox, emailInboxTableBody);
 
 		/*
 		// Add a window for the email to the desktop
@@ -258,6 +280,8 @@ function populateEmail (id) {
     const currentEmail = emails.find(e => e.id === id)
     const emailWindow = document.querySelector(`#email-popup-${id}`)
 
+	console.log(emailWindow)
+	console.log(id)
     emailWindow.innerHTML = ''
 
         emailWindow.setAttribute('title', currentEmail.subject.line)
