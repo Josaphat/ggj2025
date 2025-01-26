@@ -2,6 +2,14 @@ fos-icon {
 	position: relative;
 }
 
+.icon-text {
+	color: lightgray;
+	font-size: 18px;
+	font-weight: bold;
+	-webkit-text-stroke-width: 0.6px;
+	-webkit-text-stroke-color: black;
+}
+
 #fos-fake-bar {
 	position: absolute;
 	bottom: 0;
