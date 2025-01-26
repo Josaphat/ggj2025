@@ -244,12 +244,22 @@ function populateEmail (id) {
 
         console.log(`optionResponse${currentEmail.canReply}`)
         console.log(localStorage.getItem(`optionResponse${currentEmail.canReply}`))
-        if (currentEmail.canReply && (localStorage.getItem(`optionResponse${currentEmail.canReply}`) === null)) {
-            const replyButton = document.createElement('button')
-            replyButton.className = `reply-button reply-button-${currentEmail.canReply}`
-            replyButton.textContent = "Reply"
-            replyButton.onclick = () => {onEmailClick(currentEmail.canReply)}
-            emailWindow.append(replyButton)
+        if (currentEmail.canReply) {
+            if ((localStorage.getItem(`optionResponse${currentEmail.canReply}`) === null)) {
+                const replyButton = document.createElement('button')
+                replyButton.className = `reply-button reply-button-${currentEmail.canReply}`
+                replyButton.textContent = "Reply"
+                replyButton.onclick = () => {onEmailClick(currentEmail.canReply)}
+                emailWindow.append(replyButton)
+            } else {
+                const replyButton = document.createElement('button')
+                replyButton.className = `reply-button reply-button-${currentEmail.canReply}`
+                replyButton.setAttribute('disabled', true)
+                replyButton.textContent = "Replied"
+                replyButton.onclick = () => {onEmailClick(currentEmail.canReply)}
+                emailWindow.append(replyButton)
+            }
+            
         }
 
         if(currentEmail.canSend) {
