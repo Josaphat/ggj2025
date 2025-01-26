@@ -60,6 +60,26 @@ Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
     "isRead": false,
+}, {
+    "id": "not-congrats-email",
+    "day": 3,
+    "from": "Creepy Man",
+    "fromEmail": 'creepyman@aol.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Thurs. January 14th 7am',
+    "cc": '',
+    "subject": {
+        "line": "L",
+        "options": [],
+    },
+    "content": `Fair Tidings Paul,
+Ah, an unfortunate pick. Admittedly, it would be hard in your...condition, but you must remember a gamble can really pay off.
+Better luck next time, friend. I will be watching.
+Your mysterious benefactor`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
 }
 ,{
     "id": "starting-email-reply",
@@ -175,6 +195,8 @@ function populateInbox () {
         const playerSharesOfPOG = localStorage.getItem('playerShares_Philippines Offshore Gambling')
         if (Number(playerSharesOfPOG) >= 100) {
             addEmails(emailsInbox, emailInboxTableBody, (email) => (email.day === 2 || email.day === 1 || (email.day === 3 && email.id === 'congrats-email')))
+        } else {
+            addEmails(emailsInbox, emailInboxTableBody, (email) => (email.day === 2 || email.day === 1 || (email.day === 3 && email.id === 'not-congrats-email')))
         }
     }
 
