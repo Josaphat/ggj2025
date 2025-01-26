@@ -242,9 +242,11 @@ function populateEmail (id) {
             emailWindow.append(emailContent)
         }
 
-        if (currentEmail.canReply) {
+        console.log(`optionResponse${currentEmail.canReply}`)
+        console.log(localStorage.getItem(`optionResponse${currentEmail.canReply}`))
+        if (currentEmail.canReply && (localStorage.getItem(`optionResponse${currentEmail.canReply}`) === null)) {
             const replyButton = document.createElement('button')
-            replyButton.className = 'reply-button'
+            replyButton.className = `reply-button reply-button-${currentEmail.canReply}`
             replyButton.textContent = "Reply"
             replyButton.onclick = () => {onEmailClick(currentEmail.canReply)}
             emailWindow.append(replyButton)
@@ -289,6 +291,9 @@ function sendEmail (id, hasOptions) {
     const emailWindow = document.querySelector(`#email-popup-${id}`)
     emailWindow.style.setProperty('display', 'none')
 
+    const replyButton = document.querySelector(`.reply-button-${id}`)
+    replyButton.setAttribute('disabled', true)
+    replyButton.textContent = 'Replied'
 }
 
 function clickOnStartingEmailLink () {
