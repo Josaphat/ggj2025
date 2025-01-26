@@ -273,4 +273,6 @@ Dr. Lawrence, MD.`,
     "isRead": false,
 }
 // END DAY FOUR
-].concat(news_emails);
+// START DAY 1 FAMILY EMAIL
+// END DAY 1 FAMILY EMAIL
+].concat(news_emails).concat(family_emails);
