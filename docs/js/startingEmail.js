@@ -1,24 +1,25 @@
-const emails = [{
-    "id": "starting-email",
-    "day": 1,
-    "from": "Creepy Man",
-    "fromEmail": 'creepyman@aol.com',
-    "to": "Paul",
-    "toEmail": 'mastertraderpaul98@aol.com',
-    "received": 'Wed. January 12th 2pm',
-    "cc": '',
-    "subject": {
-        "line": "Want Money?",
-        "options": [],
-    },
-    "content": `Dear Paul,
+const emails = [
+	{
+		"id": "starting-email",
+		"day": 1,
+		"from": "Creepy Man",
+		"fromEmail": 'creepyman@aol.com',
+		"to": "Paul",
+		"toEmail": 'mastertraderpaul98@aol.com',
+		"received": 'Mon. November 9th 2pm',
+		"cc": '',
+		"subject": {
+			"line": "Want Money?",
+			"options": [],
+		},
+		"content": `Dear Paul,
 Fortune finds me in need of a man on the outside. You can help me. There is a reward in it for you. <button class="functionally-a-button-stylistically-a-link" onclick="clickOnStartingEmailLink()">Look here</button>
 Best,
 Your mysterious benefactor`,
-    "isReply": false,
-    "canReply": "starting-email-reply",
-    "isRead": false,
-},
+		"isReply": false,
+		"canReply": "starting-email-reply",
+		"isRead": false,
+	},
 {
     "id": "park-email",
     "day": 2,
@@ -26,7 +27,7 @@ Your mysterious benefactor`,
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
-    "received": 'Thurs. January 13th 6am',
+    "received": 'Tues. November 10th 6am',
     "cc": '',
     "subject": {
         "line": "Go West, Young Man",
@@ -86,8 +87,50 @@ Your mysterious benefactor`,
     "canReply": "",
     "canSend": true,
     "isRead": true,
-}]
+},
+	{
+		"id": "news-day-2",
+		"day": 2,
+		"from": "Newsletter",
+		"fromEmail": 'news@aol.com',
+		"to": "Paul",
+		"toEmail": 'mastertraderpaul98@aol.com',
+		"received": 'Mon. November 9th 2pm',
+		"cc": '',
+		"subject": {
+			"line": "Daily News Update",
+			"options": [],
+		},
+		"content": `News:
+Bills win again`,
+		"isReply": false,
+		"canReply": "news-day-2-reply",
+		"isRead": false,
+	},
+	{
+		"id": "news-day-2-reply",
+		"from": "Paul (mastertraderpaul98@aol.com)",
+		"to": "AOL Blast (news@aol.com)",
+		"cc": '',
+		"subject": {
+			"line": "Re: Daily News Update",
+			"options": [
+				{
+					"value": 'unsubscribe',
+					"text": "Re: Daily News Update",
+					"content": "Please remove me from this list."
+				}
+			],
+		},
+		"content": "",
+		"isReply": true,
+		"canReply": "",
+		"canSend": true,
+		"isRead": true,
+	},
+]
 function addEmails (emailsInbox, emailInboxTableBody, condition) {
+	var count = 0;
     emails.filter(condition).forEach((email, index) => {
         const buttonOverlay = document.createElement('button')
         buttonOverlay.className = `not-ninety-eight-style email-button-${email.id}`
@@ -164,13 +207,20 @@ function populateInbox () {
     const emailInboxTableBody = document.createElement('tbody')
     emailInboxTable.append(emailInboxTableBody)
 
-    const currentDay = localStorage.getItem('day')
-    if (Number(currentDay) === 1) { 
-        addEmails(emailsInbox, emailInboxTableBody, (email) => email.day === 1)
-    }
-    if (Number(currentDay) === 2) {
-        addEmails(emailsInbox, emailInboxTableBody, (email) => (email.day === 2 || email.day === 1))
-    }
+	addEmails(emailsInbox, emailInboxTableBody, (email) => email.day === Number(localStorage.getItem("day")));
+
+		/*
+		// Add a window for the email to the desktop
+		var desktop = document.getElementById("desktop");
+		var win = document.createElement('fos-window');
+		win.name = "email-day-"+localStorage.getItem("day")+"-num-"+count;
+		win.id = "email-popup-"+email.id;
+		desktop.append(win);
+		// alert("appended " + win.id);
+		count += 1;
+		if(!email.hasOwnProperty("day")) {
+			return
+		}*/
 
     emailsInbox.append(emailInboxTable)
 }
@@ -238,7 +288,7 @@ function populateEmail (id) {
         const emailHeaderSubjectRowHeader = document.createElement('th')
         emailHeaderSubjectRowHeader.textContent = "Subject: "
         emailHeaderSubjectRow.append(emailHeaderSubjectRowHeader)
-        
+ 
         if (currentEmail.subject.options <= 0) {
             // If no choices
             const emailHeaderSubjectRowData = document.createElement('td')
