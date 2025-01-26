@@ -47,8 +47,8 @@ function onLogoffClick() {
             const currDay = localStorage.getItem('day')
             if(currDay) {
                 localStorage.setItem('day', Number(currDay) + 1)
-                localStorage.setItem('emailsFetched', false)
-        } else {
+				document.getElementById('timebox').innerHTML = '<p style="bottom: 50%">11/' + (8+Number(localStorage.getItem('day'))) + '/1998</p>';
+            } else {
                 console.error('no day set')
             }
         }

@@ -51,6 +51,7 @@ class Bar extends HTMLElement {
 				:host{
 					position: absolute;
 					${this.position}: 0;
+					bottom: 2px;
 					left: 0;z-index: 1000;background: silver;
 					box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
 					border: none;
