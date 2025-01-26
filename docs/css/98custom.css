@@ -93,7 +93,16 @@ fos-window, fos-menu {
     background-color: #39107b !important;
     color: white;
  }
+
+ .email-button-congrats-email:hover ~ table .email-overlay-congrats-email {
+    background-color: #39107b !important;
+    color: white;
+ }
  
+ .email-button-not-congrats-email:hover ~ table .email-overlay-not-congrats-email {
+    background-color: #39107b !important;
+    color: white;
+ }
 
 .email-is-read {
     background-color: #dce4e4

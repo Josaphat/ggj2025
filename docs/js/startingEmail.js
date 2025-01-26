@@ -1,6 +1,7 @@
 const emails = [
 	{
 		"id": "starting-email",
+		"cond": function() {this.day <= Number(localStorage.getItem("day"))},
 		"day": 1,
 		"from": "Creepy Man",
 		"fromEmail": 'creepyman@aol.com',
@@ -22,6 +23,7 @@ Your mysterious benefactor`,
 	},
 {
     "id": "park-email",
+	"cond": function() {this.day <= Number(localStorage.getItem("day"))},
     "day": 2,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
@@ -43,12 +45,13 @@ Your mysterious benefactor`,
 },
 {
     "id": "congrats-email",
+	"cond": function() {this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
     "day": 3,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
-    "received": 'Thurs. January 14th 7am',
+    "received": 'Wed. November 11th 7am',
     "cc": '',
     "subject": {
         "line": "Poggers",
@@ -57,6 +60,27 @@ Your mysterious benefactor`,
     "content": `Fair Tidings Paul,
 I see you have made the correct choice. Sometimes a gamble really pays off, doesn't it?
 Best of luck, friend. I will be watching.
+Your mysterious benefactor`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
+}, {
+    "id": "not-congrats-email",
+	"cond": function() {this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100},
+    "day": 3,
+    "from": "Creepy Man",
+    "fromEmail": 'creepyman@aol.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Wed. November 11th 7am',
+    "cc": '',
+    "subject": {
+        "line": "L",
+        "options": [],
+    },
+    "content": `Fair Tidings Paul,
+Ah, an unfortunate pick. Admittedly, it would be hard in your...condition, but you must remember a gamble can really pay off.
+Better luck next time, friend. I will be watching.
 Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
@@ -227,6 +251,8 @@ function populateInbox () {
 
 
 function populateEmail (id) {
+	var count = 0;
+
     const currentEmail = emails.find(e => e.id === id)
     const emailWindow = document.querySelector(`#email-popup-${id}`)
 
