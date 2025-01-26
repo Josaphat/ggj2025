@@ -365,4 +365,5 @@ Dr. Lawrence`,
     "canSend": true,
     "isRead": false,
 }
-].concat(news_emails);
+// END DAY FOUR
+].concat(news_emails).concat(family_emails);

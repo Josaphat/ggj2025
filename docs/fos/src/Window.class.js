@@ -77,11 +77,14 @@ class Window extends HTMLElement {
 	bringFront(){
 		
 		const _windows = document.querySelectorAll("fos-window")
-		
+
+		// If we're top dog, don't re-render
+		if(this.style.zIndex == 999) {
+			return;
+		}
+
 		for(const w of _windows){
-		
 			w.style.zIndex = 900
-			
 		}
 		
 		this.style.zIndex = 999
@@ -160,9 +163,9 @@ class Window extends HTMLElement {
   
   	const howMany = document.querySelectorAll('fos-window').length || 1
   
-  	this.top = innerHeight * 0.2 * howMany / 5 
+  	this.top = innerHeight * 0.2 * howMany / 15
   	
-  	this.left = innerWidth * 0.1 * howMany / 5
+  	this.left = innerWidth * 0.1 * howMany / 15
   	
   	this.render()
   	
