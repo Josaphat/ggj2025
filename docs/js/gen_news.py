@@ -1,14 +1,27 @@
 from datetime import datetime, timedelta
 
 STORIES = [
-	'News 1',
-	'News 2',
-	'News 3'
-]
+	'''
+* Buffalo Bills favorites to win 8th consecutive Super Bowl
 
-SORRIES = [
-	"Sorry, but your subscription cannot be canceled before the year 2000, as our systems do not support removal until they are destroyed.",
-	'''Sorry 3'''
+* Dot-Com Market Balloons Further With New Rush of Air
+
+* O.J. Simpson Strikes Again, Still at Large
+'''.strip(),
+	'''
+* Grocery Mogul Donny Megwan Enters Rehab
+
+* Clinton Thanks All Those Sacrificed to Perform "The Ritual"
+
+* Are Your Kids Having Sex at the Mall? You Might Be Surprised
+'''.strip(),
+	'''
+* Rep. Sanders (I-VT) Declares for 2000 Presidential Election
+
+* Mt. Hope Cemetery Nearly Full, Leaked Report Says
+
+* All Drugs Legalized
+'''.strip(),
 ]
 
 def int_to_date_string(number):
@@ -91,6 +104,6 @@ def email_day(day):
 	'''
 
 print('const news_emails = [')
-for i in range(1, min(len(STORIES), len(SORRIES))+1):
+for i in range(1, len(STORIES)):
 	print(email_day(i))
 print(']')

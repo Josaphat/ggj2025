@@ -4,7 +4,7 @@ const news_emails = [
 			"id": "news-day-1",
 			"cond": function() {return this.day == Number(localStorage.getItem("day"))},
 			"day": 1,
-			"from": "Newsletter",
+			"from": "AOL Blast",
 			"fromEmail": 'news@aol.com',
 			"to": "Paul",
 			"toEmail": 'mastertraderpaul98@aol.com',
@@ -14,7 +14,11 @@ const news_emails = [
 				"line": "Daily News Update",
 				"options": [],
 			},
-			"content": `News 1`,
+			"content": `* Buffalo Bills favorites to win 8th consecutive Super Bowl
+
+* Dot-Com Market Balloons Further With New Rush of Air
+
+* O.J. Simpson Strikes Again, Still at Large`,
 			"isReply": false,
 			"canReply": "news-unsubscribe-day-1",
 			"isRead": false,
@@ -66,7 +70,7 @@ const news_emails = [
 			"id": "news-day-2",
 			"cond": function() {return this.day == Number(localStorage.getItem("day"))},
 			"day": 2,
-			"from": "Newsletter",
+			"from": "AOL Blast",
 			"fromEmail": 'news@aol.com',
 			"to": "Paul",
 			"toEmail": 'mastertraderpaul98@aol.com',
@@ -76,7 +80,11 @@ const news_emails = [
 				"line": "Daily News Update",
 				"options": [],
 			},
-			"content": `News 2`,
+			"content": `* Grocery Mogul Donny Megwan Enters Rehab
+
+* Clinton Thanks All Those Sacrificed to Perform "The Ritual"
+
+* Are Your Kids Having Sex at the Mall? You Might Be Surprised`,
 			"isReply": false,
 			"canReply": "news-unsubscribe-day-2",
 			"isRead": false,
