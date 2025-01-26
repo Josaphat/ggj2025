@@ -1,32 +1,35 @@
-const emails = [{
-    "id": "starting-email",
-    "day": 1,
-    "from": "Creepy Man",
-    "fromEmail": 'creepyman@aol.com',
-    "to": "Paul",
-    "toEmail": 'mastertraderpaul98@aol.com',
-    "received": 'Wed. January 12th 2pm',
-    "cc": '',
-    "subject": {
-        "line": "Want Money?",
-        "options": [],
-    },
-    "content": `Dear Paul,
+const emails = [
+	{
+		"id": "starting-email",
+		"cond": function() {return this.day <= Number(localStorage.getItem("day"))},
+		"day": 1,
+		"from": "Creepy Man",
+		"fromEmail": 'creepyman@aol.com',
+		"to": "Paul",
+		"toEmail": 'mastertraderpaul98@aol.com',
+		"received": 'Mon. November 9th 2pm',
+		"cc": '',
+		"subject": {
+			"line": "Want Money?",
+			"options": [],
+		},
+		"content": `Dear Paul,
 Fortune finds me in need of a man on the outside. You can help me. There is a reward in it for you. <button class="functionally-a-button-stylistically-a-link" onclick="clickOnStartingEmailLink()">Look here</button>
 Best,
 Your mysterious benefactor`,
-    "isReply": false,
-    "canReply": "starting-email-reply",
-    "isRead": false,
-},
+		"isReply": false,
+		"canReply": "starting-email-reply",
+		"isRead": false,
+	},
 {
     "id": "park-email",
+	"cond": function() {return this.day <= Number(localStorage.getItem("day"))},
     "day": 2,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
-    "received": 'Thurs. January 13th 6am',
+    "received": 'Tues. November 10th 6am',
     "cc": '',
     "subject": {
         "line": "Go West, Young Man",
@@ -42,12 +45,13 @@ Your mysterious benefactor`,
 },
 {
     "id": "congrats-email",
+	"cond": function() {return this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
     "day": 3,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
-    "received": 'Thurs. January 14th 7am',
+    "received": 'Wed. November 11th 7am',
     "cc": '',
     "subject": {
         "line": "Poggers",
@@ -62,12 +66,13 @@ Your mysterious benefactor`,
     "isRead": false,
 }, {
     "id": "not-congrats-email",
+	"cond": function() {return this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100},
     "day": 3,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
-    "received": 'Thurs. January 14th 7am',
+    "received": 'Wed. November 11th 7am',
     "cc": '',
     "subject": {
         "line": "L",
@@ -83,6 +88,7 @@ Your mysterious benefactor`,
 }
 ,{
     "id": "starting-email-reply",
+	"cond": function() { return false; },
     "from": "Paul (mastertraderpaul98@aol.com)",
     "to": "Creepy Man (creepyman@aol.com)",
     "cc": '',
@@ -106,7 +112,50 @@ Your mysterious benefactor`,
     "canReply": "",
     "canSend": true,
     "isRead": true,
-}]
+},
+	{
+		"id": "news-day-2",
+		"cond": function() {return this.day <= Number(localStorage.getItem("day"))},
+		"day": 2,
+		"from": "Newsletter",
+		"fromEmail": 'news@aol.com',
+		"to": "Paul",
+		"toEmail": 'mastertraderpaul98@aol.com',
+		"received": 'Mon. November 9th 2pm',
+		"cc": '',
+		"subject": {
+			"line": "Daily News Update",
+			"options": [],
+		},
+		"content": `News:
+Bills win again`,
+		"isReply": false,
+		"canReply": "news-day-2-reply",
+		"isRead": false,
+	},
+	{
+		"id": "news-day-2-reply",
+		"cond": function() { return false; },
+		"from": "Paul (mastertraderpaul98@aol.com)",
+		"to": "AOL Blast (news@aol.com)",
+		"cc": '',
+		"subject": {
+			"line": "Re: Daily News Update",
+			"options": [
+				{
+					"value": 'unsubscribe',
+					"text": "Re: Daily News Update",
+					"content": "Please remove me from this list."
+				}
+			],
+		},
+		"content": "",
+		"isReply": true,
+		"canReply": "",
+		"canSend": true,
+		"isRead": true,
+	},
+]
 
 function onEmailClick(emailId) {
     const emailWindow = document.querySelector(`#email-popup-${emailId}`)
@@ -121,12 +170,32 @@ function onEmailClick(emailId) {
     emailWindow.style.setProperty('display', 'block')
 }
 
-function addEmails (emailsInbox, emailInboxTableBody, condition) {
-    emails.filter(condition).forEach((email, index) => {
+function addEmails (emailsInbox, emailInboxTableBody) {
+	var count = 0;
+	var added = 0;
+    emails.forEach((email, index) => {
+		// Add a window for the email to the desktop
+		var desktop = document.getElementById("desktop");
+		var win = document.createElement('fos-window');
+		win.name = "email-day-"+localStorage.getItem("day")+"-num-"+count;
+		win.id = "email-popup-"+email.id;
+		desktop.append(win);
+		// alert("appended " + win.id);
+		count += 1;
+
+		if(!email.cond()) {
+			console.log(email.cond);
+			console.log("nope")
+			return;
+		}
+		console.log("adding")
+
         const buttonOverlay = document.createElement('button')
         buttonOverlay.className = `not-ninety-eight-style email-button-${email.id}`
         buttonOverlay.onclick = () => onEmailClick(email.id)
-        buttonOverlay.style = `width: 100%; height: 16px; position: absolute; top: ${16 * (index + 1)}px; z-index: 1000;`
+        buttonOverlay.style = `width: 100%; height: 16px; position: absolute; top: ${16 * (added + 1)}px; z-index: 1000;`
+
+		added += 1;
 
         emailsInbox.append(buttonOverlay)
 
@@ -201,30 +270,33 @@ function populateInbox () {
     const emailInboxTableBody = document.createElement('tbody')
     emailInboxTable.append(emailInboxTableBody)
 
-    const currentDay = localStorage.getItem('day')
-    if (Number(currentDay) === 1) { 
-        addEmails(emailsInbox, emailInboxTableBody, (email) => email.day === 1)
-    }
-    if (Number(currentDay) === 2) {
-        addEmails(emailsInbox, emailInboxTableBody, (email) => (email.day === 2 || email.day === 1))
-    }
-    if (Number(currentDay) === 3) {
-        const playerSharesOfPOG = localStorage.getItem('playerShares_Philippines Offshore Gambling')
-        if (Number(playerSharesOfPOG) >= 100) {
-            addEmails(emailsInbox, emailInboxTableBody, (email) => (email.day === 2 || email.day === 1 || (email.day === 3 && email.id === 'congrats-email')))
-        } else {
-            addEmails(emailsInbox, emailInboxTableBody, (email) => (email.day === 2 || email.day === 1 || (email.day === 3 && email.id === 'not-congrats-email')))
-        }
-    }
+	addEmails(emailsInbox, emailInboxTableBody);
+
+		/*
+		// Add a window for the email to the desktop
+		var desktop = document.getElementById("desktop");
+		var win = document.createElement('fos-window');
+		win.name = "email-day-"+localStorage.getItem("day")+"-num-"+count;
+		win.id = "email-popup-"+email.id;
+		desktop.append(win);
+		// alert("appended " + win.id);
+		count += 1;
+		if(!email.hasOwnProperty("day")) {
+			return
+		}*/
 
     emailsInbox.append(emailInboxTable)
 }
 
 
 function populateEmail (id) {
+	var count = 0;
+
     const currentEmail = emails.find(e => e.id === id)
     const emailWindow = document.querySelector(`#email-popup-${id}`)
 
+	console.log(emailWindow)
+	console.log(id)
     emailWindow.innerHTML = ''
 
         emailWindow.setAttribute('title', currentEmail.subject.line)
@@ -282,7 +354,7 @@ function populateEmail (id) {
         const emailHeaderSubjectRowHeader = document.createElement('th')
         emailHeaderSubjectRowHeader.textContent = "Subject: "
         emailHeaderSubjectRow.append(emailHeaderSubjectRowHeader)
-        
+ 
         if (currentEmail.subject.options <= 0) {
             // If no choices
             const emailHeaderSubjectRowData = document.createElement('td')
