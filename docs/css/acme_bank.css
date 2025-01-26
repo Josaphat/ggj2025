@@ -19,7 +19,7 @@ body {
 }
 
 #notifications-area h2 {
-    color: red;
+    color: darkred;
 }
 
 #notifications-area h2:before {

@@ -15,9 +15,11 @@ function init() {
     if(localStorage.getItem('day')===null) {
         localStorage.setItem('day', 1)
     }
+	if(localStorage.getItem("playerDebt")===null) {
+		localStorage.setItem("playerDebt", 1000000);
+	}
 	if(localStorage.getItem("playerMoney")===null) {
-		localStorage.setItem("playerMoney", 1000000);
-		alert("You need to change the player money");
+		localStorage.setItem("playerMoney", 10000);
 		console.log(localStorage);
 	} else {
 		console.log(localStorage);

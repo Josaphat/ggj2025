@@ -21,7 +21,7 @@
           </div>
         </div>
       
-      <fos-desktop style="background-image: url('imgs/bubble.jpg'); background-size: 100vw 100vh;">
+      <fos-desktop style="background-image: url('assets/images/bubble.jpg'); background-size: 100vw 100vh;">
 
 			<!-- ICON DEFINITIONS BELOW -->
 
@@ -66,6 +66,16 @@
 				</div>
 			</fos-icon>
 
+			<!-- Media Player icon -->
+            <fos-icon fixed="true" href="media" style="background-color: transparent; box-shadow: none;">
+				<div>
+					<table style="text-align: center; background-color: transparent;">
+					<tr><td><img src="./assets/gnome_icons/Gnome-applications-multimedia.svg.png_32.png" height="50vw" width="50vh"></img></td></tr>
+					<tr><td><p style="color: lightgray; font-size: 16px; font-weight: normal;">Media Player</p></td></tr>
+					</table>
+				</div>
+			</fos-icon>
+
 			<!-- Copilot icon -->
             <fos-icon fixed="true" href="copilot" style="background-color: transparent; box-shadow: none;">
 				<div>
@@ -96,13 +106,18 @@
 				<img src="./assets/images/expand_dong.webp" style="width: 100%; height: 100%;" />
 			</fos-window>
 
+			<!-- Media Player window -->
+			<fos-window name="media" title="Media Player">
+				<iframe style="min-width: 560; min-height: 316; width: 100%; height: 100%;" src="https://www.youtube.com/embed/-Z_NvVMUcG8?si=3oh56HAbF41z06kY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+			</fos-window>
+
 			<!-- Stonks window -->
 			<fos-window name="stonks" title="Stonks 'R' Us">
 				<iframe id="stonks-iframe" src="./stonks_r_us.html" style="min-height: 75vh; min-width: 75vw; height: 100%; width: 100%;"></iframe>
 			</fos-window>
 
 			<fos-window name="bank" title="ACME Bank">
-				<iframe id="bank-iframe" src="./acme_bank.html" style="min-height: 75vh; min-width: 75vw; height: 100%; width: 100%;"></iframe>
+				<iframe id="bank-iframe" src="./acme_bank.html" style="min-height: 75vh; min-width: 35vw; height: 100%; width: 100%;"></iframe>
 			</fos-window>
             
 			<!-- Emails window -->
