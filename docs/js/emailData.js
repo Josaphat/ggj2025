@@ -100,7 +100,7 @@ Your mysterious benefactor`,
     // START DAY TWO STORY EMAIL
     // START WIN EMAIL
     "id": "congrats-email",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 1 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
     "day": 2,
     "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
@@ -123,7 +123,7 @@ Your mysterious benefactor`,
 },
 { // START LOSE EMAIL
     "id": "not-congrats-email",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 1 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
     "day": 2,
     "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
@@ -200,7 +200,7 @@ Paul`
     // START DAY THREE
     // START WIN EMAIL
     "id": "congrats-email-day-four",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) >= 100 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) >= 1 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
     "day": 3,
     "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
@@ -226,7 +226,7 @@ Your mysterious benefactor`,
 {
     // START LOSE EMAIL
     "id": "not-congrats-email-day-four",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) < 100 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_D. T. Henny's")) < 1 && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
     "day": 3,
     "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
@@ -277,7 +277,7 @@ Dr. Lawrence, MD.`,
     // START DAY FOUR
     // START WIN EMAIL
     "id": "congrats-email-day-five",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && (Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 100 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 100 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 100) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && (Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 1 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 1 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 1) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
     "day": 4,
     "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',
@@ -300,13 +300,13 @@ Your mysterious benefactor`,
 {
     // START DOCTOR EMAIL
     "id": "doctor-email-day-five",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && (Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 100 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 100 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 100) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && (Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 1 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 1 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 1) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
     "day": 4,
     "from": "Dr. Lawrence",
     "fromEmail": 'jlawrence@yahoo.com',
     "to": "Paul",
     "toEmail": 'mastertraderpaul98@aol.com',
-    "received": 'Wed. November 12th 8am',
+    "received": 'Wed. November 12th am',
     "cc": '',
     "subject": {
         "line": "Are you ok",
@@ -323,7 +323,7 @@ Dr. Lawrence`,
 {
     // START LOSE EMAIL
     "id": "not-congrats-email-day-five",
-	"cond": function() {return this.day === Number(localStorage.getItem("day")) && !(Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 100 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 100 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 100) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && !(Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 1 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 1 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 1) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
     "day": 4,
     "from": "C. Mann",
     "fromEmail": 'creepyman@aol.com',

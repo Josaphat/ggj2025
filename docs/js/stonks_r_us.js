@@ -15,10 +15,25 @@ function make_td() {
 	return td;
 }
 
-function makeBuyButton(name, price, num_shares) {
+function makeBuyButton(name, price) {
+	const containerdiv = document.createElement('div')
+	containerdiv.style = 'display: flex; flex-direction: row; align-items: center; justify-content: start;'
+
+	var buyInput = document.createElement('input')
+	buyInput.type = "number"
+	buyInput.setAttribute('min', 0)
+	buyInput.style = 'width: 45px; height: 37px;'
+
+	buyInput.onchange = () => {
+		const buyButton = document.getElementById(`player-buy-${name}`)
+		buyButton.innerHTML = "Buy " + buyInput.value + " shares<br />for $" + (Number(price) * Number(buyInput.value)).toFixed(2);
+	}
 	var buyButton = document.createElement("button");
-	buyButton.innerHTML = "Buy " + num_shares + " shares<br />for $" + (Number(price) * Number(num_shares)).toFixed(2);
+	buyButton.id = `player-buy-${name}`
+	buyButton.innerHTML = "Buy " + buyInput.value + " shares<br />for $" + (Number(price) * Number(buyInput.value)).toFixed(2);
 	buyButton.onclick = ()=>{
+		
+		const num_shares = buyInput.value ?? 0
 		var playerMoney = localStorage.getItem("playerMoney");
 		if(playerMoney===null) {
 			alert("Player money should never be null. This is a bug.");
@@ -42,7 +57,10 @@ function makeBuyButton(name, price, num_shares) {
 		alert("Bought " + num_shares + " shares of " + name + "! You now have $" + localStorage.getItem("playerMoney"));
 	};
 
-	return buyButton;
+	containerdiv.append(buyInput)
+	containerdiv.append(buyButton)
+
+	return containerdiv;
 }
 
 function makeSellButton(name, price, num_shares) {
@@ -113,19 +131,25 @@ function populate_table(stonks) {
 
 	// var buyButton = document.createElement("button");
 	// buyButton.innerHTML = "Buy 100 shares<br />for $" + parseFloat(priceString) * 100;
-	var buyButton = makeBuyButton(stonk.name, parseFloat(priceString), 100);
+	var buyButton = makeBuyButton(stonk.name, parseFloat(priceString));
 
 	// var sellButton = document.createElement("button");
 	// sellButton.innerHTML = "Sell " + sharesHeld + " shares<br />for $" + parseFloat(priceString) * sharesHeld;
 	var sellButton = makeSellButton(stonk.name, parseFloat(priceString), sharesHeld);
+
+
+	var buttonContainer = document.createElement('div')
+	buttonContainer.style = 'display: flex; flex-direction: row; justify-content: start; align-items: center;'
+	buttonContainer.appendChild(buyButton);
+	buttonContainer.appendChild(sellButton);
+
 
 	row.appendChild(ticker);
 	row.appendChild(name);
 	row.appendChild(shares);
 	row.appendChild(sharePrice);
 	row.appendChild(totalPosition);
-	row.appendChild(buyButton);
-	row.appendChild(sellButton);
+	row.appendChild(buttonContainer)
 
 	totalTotal += totalValue;
 
