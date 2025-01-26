@@ -298,6 +298,29 @@ Your mysterious benefactor`,
     "isRead": false,
 },
 {
+    // START DOCTOR EMAIL
+    "id": "doctor-email-day-five",
+	"cond": function() {return this.day === Number(localStorage.getItem("day")) && (Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 100 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 100 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 100) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},
+    "day": 4,
+    "from": "Dr. Lawrence",
+    "fromEmail": 'jlawrence@yahoo.com',
+    "to": "Paul",
+    "toEmail": 'mastertraderpaul98@aol.com',
+    "received": 'Wed. November 12th 8am',
+    "cc": '',
+    "subject": {
+        "line": "Are you ok",
+        "options": [],
+    },
+    "content": `Dear Paul,
+Look, I know you're a busy man but you haven't gotten back to me in a while. Given what the test results said...I'm worried. Could you please let me know if you're okay then we can start you on some meds to fix this.
+Best,
+Dr. Lawrence`,
+    "isReply": false,
+    "canReply": "",
+    "isRead": false,
+},
+{
     // START LOSE EMAIL
     "id": "not-congrats-email-day-five",
 	"cond": function() {return this.day === Number(localStorage.getItem("day")) && !(Number(localStorage.getItem("playerShares_Acme Tele-Typists")) >= 100 || Number(localStorage.getItem("playerShares_Gotham Energy")) >= 100 || Number(localStorage.getItem("playerShares_Jackson and Jackson")) >= 100) && localStorage.getItem('optionResponsestarting-email-reply') === 'yes'},

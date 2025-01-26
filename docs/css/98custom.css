@@ -114,6 +114,16 @@ fos-window, fos-menu {
     color: white;
  }
 
+ .email-button-congrats-email-day-five:hover ~ table .email-overlay-congrats-email-day-five {
+    background-color: #39107b !important;
+    color: white;
+ }
+ 
+ .email-button-not-congrats-email-day-five:hover ~ table .email-overlay-not-congrats-email-day-five {
+    background-color: #39107b !important;
+    color: white;
+ }
+
  .email-button-news-day-1:hover ~ table .email-overlay-news-day-1 {
     background-color: #39107b !important;
     color: white;
@@ -140,6 +150,11 @@ fos-window, fos-menu {
  }
 
  .email-button-doctor-email-day-four:hover ~ table .email-overlay-doctor-email-day-four {
+    background-color: #39107b !important;
+    color: white;
+ }
+
+ .email-button-doctor-email-day-five:hover ~ table .email-overlay-doctor-email-day-five {
     background-color: #39107b !important;
     color: white;
  }
