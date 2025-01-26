@@ -72,10 +72,9 @@ Your mysterious benefactor`,
     "canReply": "",
     "isRead": false,
 }, // END DAY 2 STORY EMAIL
-
 { // START WIN EMAIL
     "id": "congrats-email",
-	"cond": function() {return this.day == Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
+	"cond": function() {return this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) >= 100},
     "day": 3,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
@@ -88,17 +87,17 @@ Your mysterious benefactor`,
         "options": [],
     },
     "content": `Fair Tidings Paul,
-I see you have made the correct choice. Sometimes a gamble really pays off, doesn't it?
+I see you have made the correct choice. Sometimes a gamble really pays off, doesn't it? Now then...
+Are you hungry, Paul? I know you're hungry for money. But say you go get some real food - maybe, sit down, have a drink. I did that once, a good...while ago and noticed that some things on the menu happened to correspond with the stonks I was looking at. But, of course - only when I took into account where I was that moment in my life.
 Best of luck, friend. I will be watching.
 Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
     "isRead": false,
-}, // END WIN EMAIL
-
+},
 { // START LOSE EMAIL
     "id": "not-congrats-email",
-	"cond": function() {return this.day == Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100},
+	"cond": function() {return this.day <= Number(localStorage.getItem("day")) && Number(localStorage.getItem("playerShares_Philippines Offshore Gambling")) < 100},
     "day": 3,
     "from": "Creepy Man",
     "fromEmail": 'creepyman@aol.com',
@@ -111,11 +110,12 @@ Your mysterious benefactor`,
         "options": [],
     },
     "content": `Fair Tidings Paul,
-Ah, an unfortunate pick. Admittedly, it would be hard in your...condition, but you must remember a gamble can really pay off.
+Ah, an unfortunate pick. Admittedly, it would be hard in your...condition, but you must remember a gamble can really pay off. Now then...
+Are you hungry, Paul? I know you're hungry for money. But say you go get some real food - maybe, sit down, have a drink. I did that once, a good...while ago and noticed that some things on the menu happened to correspond with the stonks I was looking at. But, of course - only when I took into account where I was that moment in my life.
 Better luck next time, friend. I will be watching.
 Your mysterious benefactor`,
     "isReply": false,
     "canReply": "",
     "isRead": false,
-}, // END LOSE EMAIL
+} // END LOSE EMAIL
 ].concat(news_emails);

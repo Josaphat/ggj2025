@@ -1,16 +1,3 @@
-function onEmailClick(emailId) {
-    const emailWindow = document.querySelector(`#email-popup-${emailId}`)
-
-    populateEmail(emailId)
-
-    const emailOverlayIsRead = document.querySelector(`.email-overlay-${emailId}`)
-    if (emailOverlayIsRead) {
-        emailOverlayIsRead.classList.add('email-is-read')
-    }
-
-    emailWindow.style.setProperty('display', 'block')
-}
-
 function resetWindows() {
     const allWindows = document.getElementsByTagName('fos-window')
 
@@ -47,11 +34,17 @@ function onLogoffClick() {
             const currDay = localStorage.getItem('day')
             if(currDay) {
                 localStorage.setItem('day', Number(currDay) + 1)
+                populateInbox()
 				document.getElementById('timebox').innerHTML = '<p style="bottom: 50%">11/' + (8+Number(localStorage.getItem('day'))) + '/1998</p>';
 				resetIFrames();
+
             } else {
                 console.error('no day set')
             }
         }
     }, 1000)
+}
+
+window.onload = (event) => {
+    populateInbox()
 }

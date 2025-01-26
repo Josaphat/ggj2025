@@ -104,6 +104,13 @@ fos-window, fos-menu {
     color: white;
  }
 
+
+ .email-button-news-day-2:hover ~ table .email-overlay-news-day-2 {
+    background-color: #39107b !important;
+    color: white;
+ }
+
+
 .email-is-read {
     background-color: #dce4e4
 }

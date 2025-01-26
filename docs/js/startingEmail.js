@@ -1,3 +1,16 @@
+function onEmailClick(emailId) {
+    const emailWindow = document.querySelector(`#email-popup-${emailId}`)
+
+    populateEmail(emailId)
+
+    const emailOverlayIsRead = document.querySelector(`.email-overlay-${emailId}`)
+    if (emailOverlayIsRead) {
+        emailOverlayIsRead.classList.add('email-is-read')
+    }
+
+    emailWindow.style.setProperty('display', 'block')
+}
+
 function addEmails (emailsInbox, emailInboxTableBody) {
 	var count = 0;
 	var added = 0;
@@ -63,6 +76,7 @@ function addEmails (emailsInbox, emailInboxTableBody) {
 }
 
 function populateInbox () {
+    console.log('populate inbox')
     const emailsInbox = document.querySelector('#emails-inbox')
 
 
